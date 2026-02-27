@@ -21,3 +21,6 @@ class ListQueue(Generic[T]):
         if self.is_empty():
             raise Exception("Queue is empty")
         return self.items.pop(0)
+    
+    def clear(self):
+        self.items = []
