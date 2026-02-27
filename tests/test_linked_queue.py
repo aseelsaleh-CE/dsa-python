@@ -48,3 +48,12 @@ def test_clear_method(queue):
     assert queue.head is None
     assert queue.tail is None
     assert queue.is_empty() is True
+
+def test_front():
+    queue = LinkedQueue()
+    queue.enqueue(10)
+    queue.enqueue(20)
+    
+    assert queue.front() == 10
+    
+    
