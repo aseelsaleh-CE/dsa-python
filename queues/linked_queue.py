@@ -25,3 +25,14 @@ class LinkedQueue (Generic[T]):
         if self.head is None:
             self.head = self.tail
         self.size += 1
+
+    
+    def dequeue(self) -> T:
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        data: T = self.head.data 
+        self.head = self.head.next
+        if self.head is None:
+            self.tail = None
+        self.size -= 1
+        return data
