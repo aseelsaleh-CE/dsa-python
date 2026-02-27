@@ -24,3 +24,10 @@ class ListQueue(Generic[T]):
     
     def clear(self):
         self.items = []
+
+    
+    def front(self) -> T:
+        if self.is_empty():
+            raise Exception("Queue is empty")
+        return self.items[0]
+
