@@ -25,4 +25,3 @@ class LinkedQueue (Generic[T]):
         if self.head is None:
             self.head = self.tail
         self.size += 1
-    
