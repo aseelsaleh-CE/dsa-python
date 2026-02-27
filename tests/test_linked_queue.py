@@ -35,3 +35,16 @@ def test_dequeue(queue):
     val = queue.dequeue()
     assert val == "B"
     assert queue.is_empty() is True
+    
+def test_clear_method(queue):
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    assert queue.size == 3
+    
+    queue.clear()
+    
+    assert queue.size == 0
+    assert queue.head is None
+    assert queue.tail is None
+    assert queue.is_empty() is True

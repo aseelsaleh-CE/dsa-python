@@ -36,3 +36,8 @@ class LinkedQueue (Generic[T]):
             self.tail = None
         self.size -= 1
         return data
+    
+    def clear(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
