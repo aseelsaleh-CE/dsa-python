@@ -41,3 +41,8 @@ class LinkedQueue (Generic[T]):
         self.head = None
         self.tail = None
         self.size = 0
+    
+    def front(self):
+        if self.is_empty():
+            raise Exception("Queue is empty")
+        return self.head.data
