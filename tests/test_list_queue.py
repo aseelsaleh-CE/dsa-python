@@ -16,3 +16,10 @@ def test_dequeue_list(l_queue):
     assert val == 1
     assert l_queue.size == 1
     assert l_queue.items == [2]
+
+
+def test_clear_list(l_queue):
+    l_queue.enqueue(100)
+    l_queue.clear()
+    assert l_queue.is_empty() is True
+    assert len(l_queue.items) == 0
