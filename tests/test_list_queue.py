@@ -23,3 +23,8 @@ def test_clear_list(l_queue):
     l_queue.clear()
     assert l_queue.is_empty() is True
     assert len(l_queue.items) == 0
+
+def test_empty_exception(l_queue):
+    with pytest.raises(Exception) as excinfo:
+        l_queue.dequeue()
+    assert "Queue is empty" in str(excinfo.value)
