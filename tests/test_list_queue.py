@@ -28,3 +28,11 @@ def test_empty_exception(l_queue):
     with pytest.raises(Exception) as excinfo:
         l_queue.dequeue()
     assert "Queue is empty" in str(excinfo.value)
+
+
+def test_front_method(l_queue):
+    l_queue.enqueue("A")
+    l_queue.enqueue("B")
+    
+    assert l_queue.front() == "A"
+    assert l_queue.size == 2  
