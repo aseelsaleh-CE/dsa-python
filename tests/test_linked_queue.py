@@ -21,3 +21,17 @@ def test_enqueue(queue):
     assert queue.size == 2
     assert queue.head.data == 10
     assert queue.tail.data == 20
+
+
+def test_dequeue(queue):
+    queue.enqueue("A")
+    queue.enqueue("B")
+    
+    val = queue.dequeue()
+    assert val == "A"
+    assert queue.size == 1
+    assert queue.head.data == "B"
+    
+    val = queue.dequeue()
+    assert val == "B"
+    assert queue.is_empty() is True
