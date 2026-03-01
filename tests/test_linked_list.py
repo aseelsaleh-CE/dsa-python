@@ -55,7 +55,7 @@ def test_contains():
     ll.append("a")
     assert ll.contains("a") is True
     assert ll.contains("z") is False
-    
+
 def test_index_of():
     ll = LinkedList()
     ll.append(5)   
@@ -63,3 +63,11 @@ def test_index_of():
     assert ll.index_of(10) == 1  
     assert ll.index_of(5) == 0  
     assert ll.index_of(999) == -1
+
+def test_for_each_multiplication():
+    ll = LinkedList()
+    ll.append(10)
+    ll.append(20)
+    doubled = []
+    ll.for_each(lambda x: doubled.append(x * 2))
+    assert doubled == [20, 40]
