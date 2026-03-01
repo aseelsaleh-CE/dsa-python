@@ -12,3 +12,9 @@ class LinkedList:
 
     def get_length(self) -> int:
         return self.length
+    
+    def add(self, data: Any) -> None:
+        node = Node(data)
+        node.next = self.head
+        self.head = node
+        self.length += 1
