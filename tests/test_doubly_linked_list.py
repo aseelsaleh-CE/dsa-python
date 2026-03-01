@@ -137,3 +137,30 @@ def test_print_backward_empty(capsys):
     
     captured = capsys.readouterr()
     assert captured.out.strip() == "Empty List"
+
+    import pytest
+# افترضنا أن اسم الملف والمجلد هما linked_lists.doubly_linked_list
+from linked_lists.doubly_linked_list import DoublyLinkedList
+
+def test_remove_at_tail():
+    dll = DoublyLinkedList[int]()
+    
+    with pytest.raises(IndexError):
+        dll.remove_at_tail()
+
+    dll.insert_at_tail(10)
+    dll.insert_at_tail(20)
+    dll.insert_at_tail(30)
+    
+    assert dll.remove_at_tail() == 30
+    assert dll.size == 2
+    assert dll.tail.data == 20  
+    assert dll.tail.next is None 
+
+    assert dll.remove_at_tail() == 20
+    assert dll.size == 1
+    assert dll.head == dll.tail
+
+    assert dll.remove_at_tail() == 10
+    assert dll.head is None
+    assert dll.tail is None
