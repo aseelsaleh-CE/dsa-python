@@ -164,3 +164,14 @@ def test_remove_at_tail():
     assert dll.remove_at_tail() == 10
     assert dll.head is None
     assert dll.tail is None
+
+
+def test_remove_at_head():
+    dll = DoublyLinkedList[int]()
+    dll.insert_at_tail(10)
+    dll.insert_at_tail(20)
+
+    assert dll.remove_at_head() == 10
+    assert dll.size == 1 
+    assert dll.head.data == 20
+    assert dll.head.prev is None 
