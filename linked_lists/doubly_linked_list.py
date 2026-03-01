@@ -91,6 +91,22 @@ class DoublyLinkedList (Generic[T]):
                 return True
             current = current.next
         return False    
+
+    def remove_at_tail(self) -> T:
+        if self.size == 0:
+            raise IndexError("List is empty")
+    
+        data = self.tail.data
+    
+        if self.size == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.tail = self.tail.prev
+            self.tail.next = None
+        
+        self.size -= 1
+        return data
      
     def get_at(self, index: int) -> Generic[T]:
         if index < 0 or index >= self.size:
