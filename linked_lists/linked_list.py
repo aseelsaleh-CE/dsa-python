@@ -1,6 +1,5 @@
 from typing import Optional, Callable, Any
 
-
 class Node:
     def __init__(self, data: Any) -> None:
         self.data: Any = data
