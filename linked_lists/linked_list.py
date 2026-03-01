@@ -82,3 +82,7 @@ class LinkedList:
         current.next = node_to_remove.next
         self.length -= 1
         return node_to_remove.data
+    
+    def clear(self) -> None:
+        self.head = None
+        self.length = 0
