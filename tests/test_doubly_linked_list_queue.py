@@ -39,7 +39,7 @@ def test_front_basic():
     q.enqueue(100)
     
     assert q.front() == 50
-    
+
 def test_front_after_dequeue():
     q = DLLQueue[str]()
     q.enqueue("First")
@@ -52,3 +52,24 @@ def test_front_empty_exception():
     q = DLLQueue[int]()
     with pytest.raises(IndexError, match="Queue is empty"):
         q.front()
+
+import pytest
+from queues.doubly_linked_list_queue import DLLQueue
+
+def test_size_and_empty():
+    q = DLLQueue[int]()
+    
+    assert q.is_empty() is True
+    assert q.size == 0 
+    
+    q.enqueue(10)
+    q.enqueue(20)
+    assert q.is_empty() is False
+    assert q.size == 2
+    
+    q.dequeue()
+    assert q.size == 1
+    
+    q.dequeue()
+    assert q.is_empty() is True
+    assert q.size == 0
