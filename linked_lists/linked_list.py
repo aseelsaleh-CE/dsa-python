@@ -54,3 +54,31 @@ class LinkedList:
         new_node.next = current.next
         current.next = new_node
         self.length += 1
+
+    def remove_at(self, index: int) -> Any:
+        if index < 0 or index >= self.length:
+            raise IndexError("Index out of range")
+
+        if self.head is None:
+            raise IndexError("List is empty")
+
+        if index == 0:
+            removed_data = self.head.data
+            self.head = self.head.next
+            self.length -= 1
+            return removed_data
+
+        current = self.head
+
+        for _ in range(index - 1):
+            if current.next is None:
+                raise IndexError("Index out of range")
+            current = current.next
+
+        node_to_remove = current.next
+        if node_to_remove is None:
+            raise IndexError("Index out of range")
+
+        current.next = node_to_remove.next
+        self.length -= 1
+        return node_to_remove.data
