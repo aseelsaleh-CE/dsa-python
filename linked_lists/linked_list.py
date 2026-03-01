@@ -105,3 +105,8 @@ class LinkedList:
             index += 1
         return -1
     
+    def for_each(self, action: Callable[[Any], None]) -> None:
+        current = self.head
+        while current is not None:
+            action(current.data)
+            current = current.next
