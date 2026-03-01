@@ -16,5 +16,12 @@ def test_add_and_length():
     ll.add(10)
     ll.add(20)
     ll.add(30)
-
     assert ll.length == 3
+
+def test_append_and_length():
+    ll = LinkedList()
+    ll.append(10)
+    ll.append(20)
+    ll.append(30)
+    assert ll.length == 3
+
