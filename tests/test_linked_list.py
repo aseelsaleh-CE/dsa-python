@@ -71,3 +71,14 @@ def test_for_each_multiplication():
     doubled = []
     ll.for_each(lambda x: doubled.append(x * 2))
     assert doubled == [20, 40]
+
+def test_map():
+    
+    ll = LinkedList()
+    ll.append(1)
+    ll.append(2)
+    ll.append(3)
+    new_list = ll.map(lambda x: x * 2)
+    assert new_list[0] == 2
+    assert new_list[1] == 4
+    assert new_list[2] == 6
