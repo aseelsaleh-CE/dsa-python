@@ -84,3 +84,20 @@ def test_map():
     assert current.data == 4
     current = current.next
     assert current.data == 6
+
+def test_where():
+    ll = LinkedList()
+    ll.append(1)
+    ll.append(2)
+    ll.append(3)
+    ll.append(4)
+
+    evens = ll.where(lambda x: x % 2 == 0)
+
+    assert evens.length == 2
+
+    current = evens.head
+    assert current.data == 2
+
+    current = current.next
+    assert current.data == 4
