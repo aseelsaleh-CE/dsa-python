@@ -19,3 +19,7 @@ class DLLQueue(Generic[T]):
         return self.list.remove_at_head() 
     
 
+    def front(self) -> T:
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self.list.head.data 
