@@ -8,7 +8,7 @@ class Node:
 class LinkedList:
     def __init__(self) -> None:
         self.head: Optional[Node] = None
-        self._length: int = 0
+        self.length: int = 0
 
     def get_length(self) -> int:
-        return self._length
+        return self.length
