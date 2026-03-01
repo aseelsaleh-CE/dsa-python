@@ -147,4 +147,9 @@ class LinkedList:
         
         return " -> ".join(nodes) + " -> None"
     
-    
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")

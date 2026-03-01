@@ -174,3 +174,10 @@ class DoublyLinkedList (Generic[T]):
             current = current.prev  
             
         print(" <-> ".join(elements))
+
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
