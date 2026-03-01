@@ -127,3 +127,16 @@ class LinkedList:
                 new_list.append(current.data)
             current = current.next
         return new_list
+    
+    def __str__(self) -> str:
+        if self.head is None:
+            return "Empty List"
+
+        nodes: list[str] = []
+        current = self.head
+
+        while current is not None:
+            nodes.append(str(current.data))
+            current = current.next
+
+        return " -> ".join(nodes) + " -> None"
