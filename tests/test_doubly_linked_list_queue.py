@@ -73,3 +73,23 @@ def test_size_and_empty():
     q.dequeue()
     assert q.is_empty() is True
     assert q.size == 0
+
+def test_clear_queue():
+    q = DLLQueue[int]()
+    q.enqueue(1)
+    q.enqueue(2)
+    q.enqueue(3)
+    assert q.size == 3
+    
+    q.clear()
+    
+    assert q.size == 0
+    assert q.is_empty() is True
+    
+    with pytest.raises(IndexError):
+        q.dequeue()
+
+def test_clear_already_empty():
+    q = DLLQueue[int]()
+    q.clear()
+    assert q.size == 0
