@@ -101,3 +101,11 @@ def test_where():
 
     current = current.next
     assert current.data == 4
+
+
+def test_str_representation():
+    ll = LinkedList()
+    ll.append(1)
+    ll.append(2)
+
+    assert str(ll)
