@@ -32,3 +32,23 @@ def test_enqueue_dequeue_sequence():
     
     assert q.dequeue() == 2
     assert q.is_empty() is True
+
+def test_front_basic():
+    q = DLLQueue[int]()
+    q.enqueue(50)
+    q.enqueue(100)
+    
+    assert q.front() == 50
+    
+def test_front_after_dequeue():
+    q = DLLQueue[str]()
+    q.enqueue("First")
+    q.enqueue("Second")
+    
+    q.dequeue() 
+    assert q.front() == "Second"
+
+def test_front_empty_exception():
+    q = DLLQueue[int]()
+    with pytest.raises(IndexError, match="Queue is empty"):
+        q.front()
