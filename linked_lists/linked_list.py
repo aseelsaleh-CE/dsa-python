@@ -18,3 +18,16 @@ class LinkedList:
         node.next = self.head
         self.head = node
         self.length += 1
+
+    def append(self, data: Any) -> None:
+        new_node = Node(data)
+
+        if self.head is None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next is not None:
+                current = current.next
+            current.next = new_node
+
+        self.length += 1
