@@ -31,3 +31,7 @@ class DLLQueue(Generic[T]):
     @property
     def size(self) -> int:
         return self.list.size 
+
+    def clear(self) -> None:
+        while not self.is_empty():
+            self.dequeue()
