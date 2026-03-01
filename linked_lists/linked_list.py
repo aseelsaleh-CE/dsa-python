@@ -94,3 +94,14 @@ class LinkedList:
                 return True
             current = current.next
         return False
+    
+    def index_of(self, value: Any) -> int:
+        current = self.head
+        index = 0
+        while current is not None:
+            if current.data == value:
+                return index
+            current = current.next
+            index += 1
+        return -1
+    
