@@ -31,3 +31,26 @@ class LinkedList:
             current.next = new_node
 
         self.length += 1
+
+    def insert(self, index: int, data: Any) -> None:
+        if index < 0 or index > self.length:
+            raise IndexError("Index out of range")
+
+        if index == 0:
+            self.add(data)
+            return
+
+        new_node = Node(data)
+        current = self.head
+
+        if current is None:
+            raise IndexError("Index out of range")
+
+        for _ in range(index - 1):
+            if current.next is None:
+                raise IndexError("Index out of range")
+            current = current.next
+
+        new_node.next = current.next
+        current.next = new_node
+        self.length += 1
