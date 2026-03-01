@@ -16,3 +16,10 @@ Additions and deletions are always done from the head.'
 Double Linked Stack:
 Is it necessary? Technically not for a regular stack, since we only need one side.
 Why use it? Only if you're building a more complex data structure (like Undo/Redo) that needs to move in both directions.
+
+
+
+## 🚀 How to Run
+
+```bash
+python sample_stack.py

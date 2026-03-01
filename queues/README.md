@@ -32,4 +32,8 @@ How to Run :
 
 = Run Tests
 python -m pytest
-= Run 
+
+## 🚀 How to Run
+
+```bash
+python sample_queue.py

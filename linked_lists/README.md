@@ -17,3 +17,9 @@ Insert at Head      	O(1)	O(1)
 Insert at Tail      	O(1)	O(1)
 Remove at Head	        O(1)	O(1)
 Remove at Tail      	O(n)	O(1) 
+
+
+## 🚀 How to Run
+
+```bash
+python sample_linked_list.py
