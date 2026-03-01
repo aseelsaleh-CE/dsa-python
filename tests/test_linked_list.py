@@ -10,3 +10,11 @@ def test_linked_test_creation():
     ll:LinkedList = LinkedList()
     assert ll.head is None
     assert ll.length == 0
+
+def test_add_and_length():
+    ll = LinkedList()
+    ll.add(10)
+    ll.add(20)
+    ll.add(30)
+
+    assert ll.length == 3
