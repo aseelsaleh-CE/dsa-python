@@ -86,3 +86,11 @@ class LinkedList:
     def clear(self) -> None:
         self.head = None
         self.length = 0
+
+    def contains(self, value: Any) -> bool:
+        current = self.head
+        while current is not None:
+            if current.data == value:
+                return True
+            current = current.next
+        return False
