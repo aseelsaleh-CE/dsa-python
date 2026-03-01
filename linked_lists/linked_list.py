@@ -1,4 +1,4 @@
-from typing import Optional, Callable, Any
+from typing import Optional, Any
 
 class Node:
     def __init__(self, data: Any) -> None:
