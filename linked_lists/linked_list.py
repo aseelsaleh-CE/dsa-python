@@ -105,8 +105,16 @@ class LinkedList:
             index += 1
         return -1
     
-    def for_each(self, action: Callable[[Any], None]) -> None:
+    def for_each(self, action:Any) -> None:
         current = self.head
         while current is not None:
             action(current.data)
             current = current.next
+
+    def map(self, transform: Any) -> "LinkedList":
+        new_list = LinkedList()
+        current = self.head
+        while current is not None:
+            new_list.append(transform(current.data))
+            current = current.next
+        return new_list
