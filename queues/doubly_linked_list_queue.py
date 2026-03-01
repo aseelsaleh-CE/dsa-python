@@ -23,3 +23,11 @@ class DLLQueue(Generic[T]):
         if self.is_empty():
             raise IndexError("Queue is empty")
         return self.list.head.data 
+
+    def is_empty(self) -> bool:
+            return self.size == 0 
+        
+    
+    @property
+    def size(self) -> int:
+        return self.list.size 
