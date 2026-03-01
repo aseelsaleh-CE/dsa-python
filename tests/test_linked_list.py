@@ -42,9 +42,16 @@ def test_remove_at():
     removed = ll.remove_at(1)
     assert removed == 2
     assert ll.length == 2
-    
+
 def test_clear():
     ll =LinkedList()
     ll.append(1)
     ll.append(2)
     ll.clear()
+
+def test_contains():
+    ll = LinkedList()
+    ll.append("a")
+    ll.append("a")
+    assert ll.contains("a") is True
+    assert ll.contains("z") is False
