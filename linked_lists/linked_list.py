@@ -111,10 +111,19 @@ class LinkedList:
             action(current.data)
             current = current.next
 
-    def map(self, transform: Any) -> "LinkedList":
+    def map(self, transform: Any) -> LinkedList:
         new_list = LinkedList()
         current = self.head
         while current is not None:
             new_list.append(transform(current.data))
+            current = current.next
+        return new_list
+    
+    def where(self, test:Any) -> LinkedList:
+        new_list = LinkedList()
+        current = self.head
+        while current is not None:
+            if test(current.data):
+                new_list.append(current.data)
             current = current.next
         return new_list
