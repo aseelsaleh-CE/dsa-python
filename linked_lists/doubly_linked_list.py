@@ -102,8 +102,20 @@ class DoublyLinkedList:
                 current = current.next
 
             return False
-                
+
             
+           # Returns the data at the specified zero-based index.
+        def get_at(self, index: int):
+           
+            if index < 0 or index >= self.size:
+                return None
+
+            current = self.head
+            for _ in range(index):
+                current = current.next
+
+            return current.data
+    
                 
 
                     
