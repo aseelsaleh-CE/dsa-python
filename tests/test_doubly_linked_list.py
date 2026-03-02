@@ -81,3 +81,21 @@ def test_delete_by_value():
 def test_delete_from_empty_list():
     dll = DoublyLinkedList()
     assert dll.delete(10) is False
+
+
+def test_get_at_functionality():
+    dll = DoublyLinkedList()
+    
+    assert dll.get_at(0) is None
+    
+    dll.insert_at_tail("Python")  # index 0
+    dll.insert_at_tail("Java")    # index 1
+    dll.insert_at_tail("C++")     # index 2
+    
+    assert dll.get_at(0) == "Python"
+    assert dll.get_at(1) == "Java"
+    assert dll.get_at(2) == "C++"
+    
+    assert dll.get_at(3) is None
+    
+    assert dll.get_at(-1) is None
