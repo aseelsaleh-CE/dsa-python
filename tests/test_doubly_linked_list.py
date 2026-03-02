@@ -135,3 +135,21 @@ def test_print_empty(capsys):
     
     captured = capsys.readouterr()
     assert captured.out.strip() == "Empty List"
+
+    def test_print_backward(capsys):
+        dll = DoublyLinkedList()
+        dll.insert_at_tail(10)
+        dll.insert_at_tail(20)
+        dll.insert_at_tail(30)
+        
+        dll.print_backward()
+        
+        captured = capsys.readouterr()
+        assert captured.out.strip() == "30 <-> 20 <-> 10"
+
+    def test_print_backward_empty(capsys):
+        dll = DoublyLinkedList()
+        dll.print_backward()
+        
+        captured = capsys.readouterr()
+        assert captured.out.strip() == "Empty List"
