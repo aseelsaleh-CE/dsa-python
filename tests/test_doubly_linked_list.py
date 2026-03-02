@@ -36,7 +36,7 @@ def test_insert_at_middle():
     dll.insert_at_tail("A")
     dll.insert_at_tail("C")
     dll.insert_at("B", 1)
-    
+
     assert dll.head.data == "A"
     assert dll.head.next.data == "B"
     assert dll.tail.data == "C"
@@ -53,3 +53,31 @@ def test_insert_at_middle():
     assert dll.tail.next is None
 
     assert len(dll) == 3
+
+def test_delete_by_value():
+    dll = DoublyLinkedList()
+    dll.insert_at_tail("A")
+    dll.insert_at_tail("B")
+    dll.insert_at_tail("C")
+    
+    assert dll.delete("B") is True
+    assert len(dll) == 2
+    assert dll.head.next.data == "C"
+    assert dll.tail.prev.data == "A"
+    
+    assert dll.delete("A") is True
+    assert dll.head.data == "C"
+    assert dll.head.prev is None
+    assert len(dll) == 1
+    
+    assert dll.delete("C") is True
+    assert dll.head is None
+    assert dll.tail is None
+    assert len(dll) == 0
+    
+    assert dll.delete("Z") is False
+    assert len(dll) == 0
+
+def test_delete_from_empty_list():
+    dll = DoublyLinkedList()
+    assert dll.delete(10) is False
