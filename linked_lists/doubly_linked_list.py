@@ -31,3 +31,17 @@ class DoublyLinkedList:
                 self.head.prev = new_node 
                 self.head = new_node
             self.size += 1
+
+        
+        def insert_at_tail(self,data) ->None:
+                new_node = DoublyNode(data)
+                new_node.data = data
+                if self.size == 0:
+                    self.head=self.tail = new_node
+                    new_node.next=new_node.prev=None
+                else:
+                    new_node.next = None
+                    new_node.prev = self.tail
+                    self.tail.next = new_node
+                    self.tail= new_node
+                self.size +=1
