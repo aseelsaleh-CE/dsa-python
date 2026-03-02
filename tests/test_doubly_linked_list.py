@@ -30,3 +30,26 @@ def test_insert_at_tail():
     assert dll.tail.prev.data == 20
     assert dll.head.data == 10
     assert dll.head.next.data == 20
+
+def test_insert_at_middle():
+    dll = DoublyLinkedList()
+    dll.insert_at_tail("A")
+    dll.insert_at_tail("C")
+    dll.insert_at("B", 1)
+    
+    assert dll.head.data == "A"
+    assert dll.head.next.data == "B"
+    assert dll.tail.data == "C"
+
+    
+    assert dll.head.next.next == dll.tail
+
+   
+    assert dll.tail.prev.data == "B"
+    assert dll.tail.prev.prev == dll.head
+
+    
+    assert dll.head.prev is None
+    assert dll.tail.next is None
+
+    assert len(dll) == 3
