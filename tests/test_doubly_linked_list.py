@@ -116,3 +116,22 @@ def test_contains_logic():
     assert dll.contains("Java") is False
     
     assert dll.contains("data") is False  
+
+
+def test_print_forward(capsys):
+    dll = DoublyLinkedList()
+    dll.insert_at_tail(10)
+    dll.insert_at_tail(20)
+    dll.insert_at_tail(30)
+    
+    dll.print_forward()
+    
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "10 <-> 20 <-> 30"
+
+def test_print_empty(capsys):
+    dll = DoublyLinkedList()
+    dll.print_forward()
+    
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "Empty List"
