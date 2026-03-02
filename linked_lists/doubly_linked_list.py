@@ -32,7 +32,6 @@ class DoublyLinkedList:
                 self.head = new_node
             self.size += 1
 
-        
         def insert_at_tail(self,data) ->None:
                 new_node = DoublyNode(data)
                 new_node.data = data
@@ -45,3 +44,32 @@ class DoublyLinkedList:
                     self.tail.next = new_node
                     self.tail= new_node
                 self.size +=1
+
+        # Inserts a new node with the given data at the specified index in the list.
+        def insert_at(self, data, pos: int) -> None:
+            if pos < 0 or pos > self.size:
+                raise IndexError("Out of Range!")
+
+            if pos == 0:
+                self.insert_at_head(data)
+                return
+
+            if pos == self.size:
+                self.insert_at_tail(data)
+                return
+
+            new_node = DoublyNode(data)
+            current = self.head
+
+            for _ in range(pos - 1):
+                current = current.next
+
+            next_node = current.next
+
+            new_node.prev = current
+            new_node.next = next_node
+
+            current.next = new_node
+            next_node.prev = new_node
+
+            self.size += 1
