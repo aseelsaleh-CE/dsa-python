@@ -141,4 +141,19 @@ class DoublyLinkedList:
                 current = current.next
 
             print(" <-> ".join(elements))
-                    
+
+        # Prints the elements of the doubly linked list from tail to head
+        def print_backward(self) -> None:
+                        
+            if self.tail is None:
+                print("Empty List")
+                return
+
+            current = self.tail
+            elements = []
+
+            while current:
+                elements.append(str(current.data))
+                current = current.prev
+
+            print(" <-> ".join(elements))
