@@ -99,3 +99,20 @@ def test_get_at_functionality():
     assert dll.get_at(3) is None
     
     assert dll.get_at(-1) is None
+
+def test_contains_logic():
+    dll = DoublyLinkedList()
+    
+    assert dll.contains("Python") is False
+    
+    dll.insert_at_tail("Data")
+    dll.insert_at_tail("Structures")
+    dll.insert_at_tail("Lab")
+    
+    assert dll.contains("Data") is True        
+    assert dll.contains("Structures") is True  
+    assert dll.contains("Lab") is True         
+    
+    assert dll.contains("Java") is False
+    
+    assert dll.contains("data") is False  
