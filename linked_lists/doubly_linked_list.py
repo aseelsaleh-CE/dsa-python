@@ -1,26 +1,25 @@
 from typing import Optional, Any
 
-class DoublyNode:
     # Represents a node in a doubly linked list with pointers to next and previous nodes.
+class DoublyNode:
     def __init__(self, data: Any):
         self.data = data
         self.next = None
         self.prev = None
 
 class DoublyLinkedList:
-    
+        # Initializes an empty doubly linked list.
         def __init__(self):
-            # Initializes an empty doubly linked list.
             self.head = None
             self.tail = None
             self.size = 0
 
-        def __len__(self) -> int:
         # Returns the number of elements in the list.
+        def __len__(self) -> int:
             return self.size
         
-        def insert_at_head(self, data) -> None:
         # Adds a new element at the beginning of the list.
+        def insert_at_head(self, data) -> None:
             new_node = DoublyNode(data)
             if self.head is None: 
                 self.head = new_node
@@ -32,6 +31,7 @@ class DoublyLinkedList:
                 self.head = new_node
             self.size += 1
 
+        # Inserts a new node with the given data at tail .
         def insert_at_tail(self,data) ->None:
                 new_node = DoublyNode(data)
                 new_node.data = data
@@ -73,3 +73,37 @@ class DoublyLinkedList:
             next_node.prev = new_node
 
             self.size += 1
+
+# Deletes the first node containing the given data from the list.
+        def delete(self, data) -> bool:
+            current = self.head
+            while current:
+                if current.data == data:
+
+                    if current == self.head:
+                        self.head = current.next
+                        if self.head:
+                            self.head.prev = None
+                        else:
+                            self.tail = None
+
+                    elif current == self.tail:
+                        self.tail = current.prev
+                        if self.tail:
+                            self.tail.next = None
+
+                    else:
+                        current.prev.next = current.next
+                        current.next.prev = current.prev
+
+                    self.size -= 1
+                    return True
+
+                current = current.next
+
+            return False
+                
+            
+                
+
+                    
