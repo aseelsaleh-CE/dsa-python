@@ -115,7 +115,15 @@ class DoublyLinkedList:
                 current = current.next
 
             return current.data
-    
+        
+        #Returns True if the specified data exists in the list, False otherwise.
+        def contains(self, data) -> bool:
+            current = self.head
+            while current:
+                if current.data == data:
+                    return True
+                current = current.next
+            return False
                 
 
                     
