@@ -7,15 +7,28 @@ def test_push():
     stack.push(10)
     assert stack.count == 1
 
-# def test_pop():
-#     # Test removing the top element
-#     stack = LinkedStack()
-#     stack.push(10)
-#     assert stack.pop() == 10
-
 def test_is_empty():
     # Test checking if a new stack is empty
     stack = LinkedStack()
     assert stack.is_empty() is True
     stack.push(1)
     assert stack.is_empty() is False
+
+def test_stack_size():
+    # Test stack size tracking through multiple operations
+    stack = LinkedStack()
+    assert stack.size() == 0
+    stack.push(10)
+    stack.push(20)
+    assert stack.size() == 2
+    stack.pop()
+    assert stack.size() == 1
+    stack.pop()
+    assert stack.size() == 0
+
+def test_pop():
+    # Test removing the top element
+    stack = LinkedStack()
+    stack.push(10)
+    assert stack.pop() == 10
+    assert stack.is_empty() is True
