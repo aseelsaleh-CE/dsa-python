@@ -25,6 +25,10 @@ class LinkedStack:
         new_node.next = self.top
         self.top = new_node
         self.count += 1
+    
+    def size(self) -> int:
+        # Return the current number of nodes in the stack
+        return self.count
 
     # def pop(self) -> Optional[Any]:
     #     # Remove and return the data from the top node
