@@ -1,5 +1,6 @@
 from typing import Optional, Any
 
+
 class DoublyNode:
     # Represents a node in a doubly linked list
     def __init__(self, data: Any):
@@ -29,7 +30,7 @@ class DoublyLinkedList:
             self.head.prev = new_node
             self.head = new_node
         self.size += 1
-    
+
     def insert_at_tail(self, data: Any) -> None:
         # Insert a new element at the end
         new_node = DoublyNode(data)
@@ -40,7 +41,7 @@ class DoublyLinkedList:
             self.tail.next = new_node
             self.tail = new_node
         self.size += 1
-    
+
     def insert_at(self, data: Any, pos: int) -> None:
         # Insert element at a specific position
         if pos < 0 or pos > self.size:
@@ -51,17 +52,19 @@ class DoublyLinkedList:
         if pos == self.size:
             self.insert_at_tail(data)
             return
+
         new_node = DoublyNode(data)
         current = self.head
         for _ in range(pos - 1):
             current = current.next
+
         new_node.next = current.next
         new_node.prev = current
         if current.next:
             current.next.prev = new_node
         current.next = new_node
         self.size += 1
-    
+
     def delete(self, data: Any) -> bool:
         # Delete the first occurrence of a value
         current = self.head
@@ -75,7 +78,7 @@ class DoublyLinkedList:
                         self.tail = None
                 elif current == self.tail:
                     self.tail = current.prev
-                    self.tail.next = None  
+                    self.tail.next = None
                 else:
                     current.prev.next = current.next
                     current.next.prev = current.prev
@@ -83,16 +86,16 @@ class DoublyLinkedList:
                 return True
             current = current.next
         return False
-    
+
     def get_at(self, index: int) -> Any:
         # Get element at a specific index
         if index < 0 or index >= self.size:
             return None
         current = self.head
         for _ in range(index):
-            current = current.next  
-        return current.data  
-    
+            current = current.next
+        return current.data
+
     def contains(self, data: Any) -> bool:
         # Check if value exists in the list
         current = self.head
@@ -101,7 +104,7 @@ class DoublyLinkedList:
                 return True
             current = current.next
         return False
-    
+
     def print_forward(self) -> None:
         # Print the list from head to tail
         if not self.head:
@@ -113,7 +116,7 @@ class DoublyLinkedList:
             elements.append(str(current.data))
             current = current.next
         print(" <-> ".join(elements))
-    
+
     def print_backward(self) -> None:
         # Print the list from tail to head
         if not self.tail:
@@ -125,8 +128,3 @@ class DoublyLinkedList:
             elements.append(str(current.data))
             current = current.prev
         print(" <-> ".join(elements))
-
-
-
-     
-
