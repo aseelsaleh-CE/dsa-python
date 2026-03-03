@@ -81,3 +81,12 @@ class LinkedList:
         """Removes all elements from the list."""
         self.head = None
         self.length = 0
+    
+    def contains(self, value: Any) -> bool:
+        """Checks if a specific value exists within the list."""
+        current = self.head
+        while current:
+            if current.data == value:
+                return True
+            current = current.next
+        return False
