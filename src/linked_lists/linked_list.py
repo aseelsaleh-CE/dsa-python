@@ -36,3 +36,21 @@ class LinkedList:
                 current = current.next
             current.next = new_node
         self.length += 1
+
+    def insert(self, index: int, data: Any) -> None:
+        """Inserts an element at a specific index."""
+        if not (0 <= index <= self.length):
+            raise IndexError("Index out of range")
+
+        if index == 0:
+            self.add(data)
+            return
+
+        new_node = Node(data)
+        current = self.head
+        for _ in range(index - 1):
+            current = current.next  
+        
+        new_node.next = current.next 
+        current.next = new_node      
+        self.length += 1

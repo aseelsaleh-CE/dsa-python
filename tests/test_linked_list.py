@@ -26,30 +26,30 @@ def test_add_and_length():
     assert ll.length == 3
 
 
-# def test_append_and_length():
-#     ll = LinkedList()
+def test_append_and_length():
+    ll = LinkedList()
 
-#     ll.append(10)
-#     ll.append(20)
-#     ll.append(30)
+    ll.append(10)
+    ll.append(20)
+    ll.append(30)
 
-#     assert ll.length == 3
-
-
-# def test_insert_at_beginning():
-#     ll = LinkedList()
-
-#     ll.insert(0, 10)
-
-#     assert ll.length == 1
-#     assert ll.head.data == 10
+    assert ll.length == 3
 
 
-# def test_insert_invalid_index():
-#     ll = LinkedList()
+def test_insert_at_beginning():
+    ll = LinkedList()
 
-#     with pytest.raises(IndexError):
-#         ll.insert(5, 100)
+    ll.insert(0, 10)
+
+    assert ll.length == 1
+    assert ll.head.data == 10
+
+
+def test_insert_invalid_index():
+    ll = LinkedList()
+
+    with pytest.raises(IndexError):
+        ll.insert(5, 100)
 
 
 # def test_remove_at():
