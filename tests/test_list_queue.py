@@ -21,6 +21,13 @@ def test_dequeue_order():
     assert queue.dequeue() == 2
     assert queue.is_empty() is True
 
+def test_clear_queue():
+    queue = ListQueue()
+    queue.enqueue(100)
+    queue.clear()
+    assert queue.size() == 0
+    assert queue.is_empty() is True
+
 
 # def test_clear_list(l_queue):
 #     l_queue.enqueue(100)
