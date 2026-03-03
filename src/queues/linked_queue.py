@@ -1,48 +1,14 @@
-from typing import TypeVar, Generic
-T = TypeVar('T')
-class Node(Generic[T]):
-    def __init__(self,data : T):
-        self.data = data 
-        self.next :Node = None 
+from typing import Any, Optional
 
-class LinkedQueue (Generic[T]):
-    def __init__(self):
-        self.head :Node = None
-        self.tail:Node = None
-        self.size :int = 0
+class Node:
+    def __init__(self, data: Any):
+        # Store data of any type and a reference to the next node
+        self.data: Any = data 
+        self.next: Optional['Node'] = None 
 
-    def is_empty(self) -> bool:
-        return self.head is None
-
-    def size(self) -> int:
-        return self.size
-
-    def enqueue(self, item: T) -> None:
-        new_node = Node(item)
-        if self.tail:
-            self.tail.next = new_node
-        self.tail = new_node
-        if self.head is None:
-            self.head = self.tail
-        self.size += 1
-
-    
-    def dequeue(self) -> T:
-        if self.is_empty():
-            raise IndexError("Queue is empty")
-        data: T = self.head.data 
-        self.head = self.head.next
-        if self.head is None:
-            self.tail = None
-        self.size -= 1
-        return data
-    
-    def clear(self):
-        self.head = None
-        self.tail = None
-        self.size = 0
-    
-    def front(self):
-        if self.is_empty():
-            raise Exception("Queue is empty")
-        return self.head.data
+class LinkedQueue:
+    def __init__(self) -> None:
+        # Initialize an empty linked queue with head, tail, and count
+        self.head: Optional[Node] = None
+        self.tail: Optional[Node] = None
+        self.size: int = 0
