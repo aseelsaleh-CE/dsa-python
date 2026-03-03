@@ -17,4 +17,11 @@ class LinkedList:
     def get_length(self) -> int:
         """Returns the total number of elements in the list."""
         return self.length
+    
+    def add(self, data: Any) -> None:
+        """Inserts a new element at the beginning of the list (Prepend)."""
+        node = Node(data)
+        node.next = self.head
+        self.head = node
+        self.length += 1
 
