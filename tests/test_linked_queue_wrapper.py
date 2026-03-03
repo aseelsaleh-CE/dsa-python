@@ -18,5 +18,12 @@ def test_dequeue_fifo_order():
     assert q.size() == 2
     assert q.dequeue() == 2
     assert q.dequeue() == 3
-
     assert q.is_empty() is True
+
+def test_peek_operation():
+    q = Queue()
+    q.enqueue("Apple")
+    q.enqueue("Banana")
+    
+    assert q.peek() == "Apple"
+    assert q.size() == 2  
