@@ -1,12 +1,22 @@
 import pytest
 from src.linked_lists.circular_linked_list import CircularLinkedList
 
+
+# -------------------------
+# Basic state tests
+# -------------------------
+
 def test_new_list_is_empty():
     cll = CircularLinkedList()
     assert cll.is_empty() is True
     assert cll.head is None
     assert cll.tail is None
     assert cll.size == 0
+
+
+# -------------------------
+# Insert tests
+# -------------------------
 
 def test_insert_single_element():
     cll = CircularLinkedList()
@@ -36,6 +46,12 @@ def test_insert_multiple_elements():
         current = current.next
 
     assert result == values
+
+
+# -------------------------
+# Contains tests
+# -------------------------
+
 def test_contains_existing_value():
     cll = CircularLinkedList()
     cll.insert(5)
@@ -51,6 +67,10 @@ def test_contains_non_existing_value():
 
     assert cll.contains(100) is False
 
+
+# -------------------------
+# getAt tests
+# -------------------------
 
 def test_getAt_valid_index():
     cll = CircularLinkedList()
@@ -70,6 +90,10 @@ def test_getAt_invalid_index():
     with pytest.raises(IndexError):
         cll.getAt(5)
 
+
+# -------------------------
+# Delete tests
+# -------------------------
 
 def test_delete_only_element():
     cll = CircularLinkedList()
@@ -123,7 +147,12 @@ def test_delete_non_existing_value():
 
     assert cll.delete(100) is False
     assert cll.length() == 2
-    
+
+
+# -------------------------
+# Print list tests
+# -------------------------
+
 def test_print_list_empty(capsys):
     cll = CircularLinkedList()
     cll.print_list()
@@ -141,4 +170,3 @@ def test_print_list_non_empty(capsys):
     captured = capsys.readouterr()
 
     assert "1 -> 2 -> (Back to Head)" in captured.out
-
