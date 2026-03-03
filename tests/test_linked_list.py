@@ -52,18 +52,18 @@ def test_insert_invalid_index():
         ll.insert(5, 100)
 
 
-# def test_remove_at():
-#     ll = LinkedList()
+def test_remove_at():
+    ll = LinkedList()
 
-#     ll.append(1)
-#     ll.append(2)
-#     ll.append(3)
+    ll.append(1)
+    ll.append(2)
+    ll.append(3)
 
-#     removed = ll.remove_at(1)
+    removed = ll.remove_at(1)
 
-#     assert removed == 2
-#     assert ll.length == 2
-#     assert ll.head.next.data == 3
+    assert removed == 2
+    assert ll.length == 2
+    assert ll.head.next.data == 3
 
 
 # def test_clear():
