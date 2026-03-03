@@ -23,3 +23,10 @@ class ListStack:
         if self.is_empty():
             raise IndexError("pop from Empty Stack")
         return self.items.pop()
+    
+    def peek(self) -> Optional[Any]:
+        # Return the top item without removing it
+        # Returns None if the stack is empty
+        if self.is_empty():
+            return None
+        return self.items[-1]
