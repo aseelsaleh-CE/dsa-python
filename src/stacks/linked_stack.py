@@ -30,12 +30,12 @@ class LinkedStack:
         # Return the current number of nodes in the stack
         return self.count
 
-    # def pop(self) -> Optional[Any]:
-    #     # Remove and return the data from the top node
-    #     # Returns None if the stack is empty
-    #     if self.is_empty():
-    #         return None
-    #     data = self.top.data
-    #     self.top = self.top.next
-    #     self.count -= 1
-    #     return data
+    def pop(self) -> Optional[Any]:
+        # Remove and return the data from the top node
+        # Returns None if the stack is empty
+        if self.is_empty():
+            return None
+        data = self.top.data
+        self.top = self.top.next
+        self.count -= 1
+        return data
