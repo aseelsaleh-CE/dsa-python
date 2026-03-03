@@ -39,3 +39,12 @@ class CircularLinkedList:
                 return True
             current = current.next
         return False
+    
+    def getAt(self, index: int) -> Any:
+        if index < 0 or index >= self.size:
+            raise IndexError("Index out of range")
+        
+        current = self.head
+        for _ in range(index):
+            current = current.next
+        return current.data
