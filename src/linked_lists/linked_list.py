@@ -101,3 +101,10 @@ class LinkedList:
             current = current.next
             index += 1
         return -1
+    
+    def for_each(self, action: Callable[[Any], None]) -> None:
+        """Applies a given function to each element in the list."""
+        current = self.head
+        while current:
+            action(current.data)
+            current = current.next
