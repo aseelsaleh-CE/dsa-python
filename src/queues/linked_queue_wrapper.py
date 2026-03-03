@@ -10,3 +10,7 @@ class Queue:
     def enqueue(self, data: Any) -> None:
         #Adds an element to the rear of the queue.
         self.list.append(data)
+
+    def size(self) -> int:
+        #Returns number of elements.
+        return self.list.get_length()
