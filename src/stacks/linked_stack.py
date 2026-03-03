@@ -13,6 +13,11 @@ class LinkedStack:
         # Initialize an empty linked stack
         self.top: Optional[Node] = None
         self.count: int = 0
+    
+    def is_empty(self) -> bool:
+        # Check if the stack contains no nodes
+        return self.count == 0
+
 
     def push(self, data: Any) -> None:
         # Create a new node and place it at the top of the stack
@@ -20,3 +25,13 @@ class LinkedStack:
         new_node.next = self.top
         self.top = new_node
         self.count += 1
+
+    # def pop(self) -> Optional[Any]:
+    #     # Remove and return the data from the top node
+    #     # Returns None if the stack is empty
+    #     if self.is_empty():
+    #         return None
+    #     data = self.top.data
+    #     self.top = self.top.next
+    #     self.count -= 1
+    #     return data
