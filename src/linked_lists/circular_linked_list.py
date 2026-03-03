@@ -48,3 +48,30 @@ class CircularLinkedList:
         for _ in range(index):
             current = current.next
         return current.data
+    
+    def delete(self, value: Any) -> bool:
+        if not self.head:
+            return False
+
+        prev = self.tail
+        current = self.head
+
+        for _ in range(self.size):
+            if current.data == value:
+                if self.size == 1:
+                    self.head = None
+                    self.tail = None
+                else:
+                    prev.next = current.next
+                    if current == self.head:
+                        self.head = current.next
+                    if current == self.tail:
+                        self.tail = prev
+                
+                self.size -= 1
+                return True
+            
+            prev = current
+            current = current.next
+            
+        return False
