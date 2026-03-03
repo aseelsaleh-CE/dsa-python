@@ -101,6 +101,19 @@ class DoublyLinkedList:
                 return True
             current = current.next
         return False
+    
+    def print_forward(self) -> None:
+        # Print the list from head to tail
+        if not self.head:
+            print("Empty List")
+            return
+        current = self.head
+        elements = []
+        while current:
+            elements.append(str(current.data))
+            current = current.next
+        print(" <-> ".join(elements))
+
 
 
      
