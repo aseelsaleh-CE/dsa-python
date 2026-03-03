@@ -17,18 +17,18 @@ def test_insert_at_head():
     assert len(dll) == 2
 
 
-# def test_insert_at_tail():
-#     dll = DoublyLinkedList()
+def test_insert_at_tail():
+    dll = DoublyLinkedList()
     
-#     dll.insert_at_tail(10)
-#     dll.insert_at_tail(20)
-#     dll.insert_at_tail(30)
+    dll.insert_at_tail(10)
+    dll.insert_at_tail(20)
+    dll.insert_at_tail(30)
     
-#     assert len(dll) == 3
-#     assert dll.tail.data == 30
-#     assert dll.tail.prev.data == 20
-#     assert dll.head.data == 10
-#     assert dll.head.next.data == 20
+    assert len(dll) == 3
+    assert dll.tail.data == 30
+    assert dll.tail.prev.data == 20
+    assert dll.head.data == 10
+    assert dll.head.next.data == 20
 
 
 # def test_insert_at_middle():
