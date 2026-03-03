@@ -32,3 +32,10 @@ def test_pop():
     stack.push(10)
     assert stack.pop() == 10
     assert stack.is_empty() is True
+
+def test_peek():
+    # Test viewing the top element without removing it
+    stack = LinkedStack()
+    stack.push(50)
+    assert stack.peek() == 50
+    assert stack.size() == 1
