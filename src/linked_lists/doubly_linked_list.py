@@ -113,6 +113,18 @@ class DoublyLinkedList:
             elements.append(str(current.data))
             current = current.next
         print(" <-> ".join(elements))
+    
+    def print_backward(self) -> None:
+        # Print the list from tail to head
+        if not self.tail:
+            print("Empty List")
+            return
+        current = self.tail
+        elements = []
+        while current:
+            elements.append(str(current.data))
+            current = current.prev
+        print(" <-> ".join(elements))
 
 
 
