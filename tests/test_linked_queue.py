@@ -35,3 +35,18 @@ def test_dequeue():
     assert val == "B"
     assert queue.is_empty() is True
     print("test_dequeue passed!")
+
+def test_clear_method():
+    queue = LinkedQueue()
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    assert queue.size() == 3
+    
+    queue.clear()
+    
+    assert queue.size() == 0
+    assert queue.head is None
+    assert queue.tail is None
+    assert queue.is_empty() is True
+    print("test_clear_method passed!")
