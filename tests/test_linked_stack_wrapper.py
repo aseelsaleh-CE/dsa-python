@@ -33,3 +33,12 @@ def test_peek_operation():
     assert stack.peek() == 200
     assert stack.size() == 2  
    
+def test_clear_stack():
+    # Test clearing all elements from the stack
+    stack = Stack()
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    stack.clear()
+    assert stack.size() == 0
+    assert stack.is_empty() is True
