@@ -66,16 +66,16 @@ def test_remove_at():
     assert ll.head.next.data == 3
 
 
-# def test_clear():
-#     ll = LinkedList()
+def test_clear():
+    ll = LinkedList()
 
-#     ll.append(1)
-#     ll.append(2)
+    ll.append(1)
+    ll.append(2)
 
-#     ll.clear()
+    ll.clear()
 
-#     assert ll.head is None
-#     assert ll.length == 0
+    assert ll.head is None
+    assert ll.length == 0
 
 
 # def test_contains():
