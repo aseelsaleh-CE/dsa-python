@@ -24,4 +24,12 @@ def test_pop_operation():
     assert stack.pop() == "B"
     assert stack.pop() == "A"
     assert stack.is_empty() is True
+
+def test_peek_operation():
+    # Test viewing the top element without removing it
+    stack = Stack()
+    stack.push(100)
+    stack.push(200)
+    assert stack.peek() == 200
+    assert stack.size() == 2  
    
