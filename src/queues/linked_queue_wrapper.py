@@ -34,5 +34,8 @@ class Queue:
     def clear(self) -> None:
         #Removes all elements.
         self.list.clear()
+    
+    def __str__(self) -> str:
+        return str(self.list)
 
 
