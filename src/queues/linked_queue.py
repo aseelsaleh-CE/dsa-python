@@ -30,6 +30,7 @@ class LinkedQueue:
         if self.head is None:
             self.head = self.tail
         self.count += 1
+
     def dequeue(self) -> Any:
         # Remove and return the data from the front node
         if self.is_empty():
@@ -44,4 +45,10 @@ class LinkedQueue:
             
         self.count -= 1
         return data
+    
+    def clear(self) -> None:
+        # Reset the queue to an empty state
+        self.head = None
+        self.tail = None
+        self.count = 0
     
