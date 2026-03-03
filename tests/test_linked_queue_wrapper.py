@@ -5,5 +5,6 @@ def test_queue_operations():
     q = Queue()
     q.enqueue("A")
     q.enqueue("B")
+    assert q.size() == 2
 
     
