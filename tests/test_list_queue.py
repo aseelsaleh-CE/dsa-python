@@ -3,8 +3,9 @@ from src.queues.list_queue import ListQueue
 
 def test_queue_operation():
     l_queue = ListQueue()
-   
 
+    assert l_queue.size() == 0
+    
 # def test_enqueue_list(l_queue):
 #     l_queue.enqueue("First")
 #     l_queue.enqueue("Second")
