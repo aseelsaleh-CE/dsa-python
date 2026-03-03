@@ -30,4 +30,9 @@ class Queue:
         if self.is_empty():
             raise IndexError("Peek from empty queue")
         return self.list.head.data
+    
+    def clear(self) -> None:
+        #Removes all elements.
+        self.list.clear()
+
 
