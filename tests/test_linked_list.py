@@ -111,22 +111,22 @@ def test_for_each_multiplication():
     assert doubled == [20, 40]
 
 
-# def test_map():
-#     ll = LinkedList()
+def test_map():
+    ll = LinkedList()
 
-#     ll.append(1)
-#     ll.append(2)
-#     ll.append(3)
+    ll.append(1)
+    ll.append(2)
+    ll.append(3)
 
-#     new_list = ll.map(lambda x: x * 2)
+    new_list = ll.map(lambda x: x * 2)
 
-#     current = new_list.head
+    current = new_list.head
 
-#     assert current.data == 2
-#     current = current.next
-#     assert current.data == 4
-#     current = current.next
-#     assert current.data == 6
+    assert current.data == 2
+    current = current.next
+    assert current.data == 4
+    current = current.next
+    assert current.data == 6
 
 
 # def test_where():
