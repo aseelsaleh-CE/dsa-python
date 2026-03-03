@@ -25,3 +25,14 @@ class LinkedList:
         self.head = node
         self.length += 1
 
+    def append(self, data: Any) -> None:
+        """Adds a new element to the end of the list."""
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+        self.length += 1
