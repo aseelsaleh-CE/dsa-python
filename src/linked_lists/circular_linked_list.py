@@ -14,7 +14,10 @@ class CircularLinkedList:
     def is_empty(self) -> bool:
         return self.head is None
     
-    def append(self, data: Any) -> None:
+    def length(self) -> int:
+        return self.size
+    
+    def insert(self, data: Any) -> None:
         new_node = Node(data)
         if self.is_empty():
             self.head = new_node
