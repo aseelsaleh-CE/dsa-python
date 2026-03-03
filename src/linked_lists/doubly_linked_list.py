@@ -54,7 +54,7 @@ class DoublyLinkedList:
         new_node = DoublyNode(data)
         current = self.head
         for _ in range(pos - 1):
-            current = current.next  # type: ignore
+            current = current.next
         new_node.next = current.next
         new_node.prev = current
         if current.next:
@@ -75,7 +75,7 @@ class DoublyLinkedList:
                         self.tail = None
                 elif current == self.tail:
                     self.tail = current.prev
-                    self.tail.next = None  # type: ignore
+                    self.tail.next = None  
                 else:
                     current.prev.next = current.next
                     current.next.prev = current.prev
@@ -83,6 +83,16 @@ class DoublyLinkedList:
                 return True
             current = current.next
         return False
+    
+    def get_at(self, index: int) -> Any:
+        # Get element at a specific index
+        if index < 0 or index >= self.size:
+            return None
+        current = self.head
+        for _ in range(index):
+            current = current.next  
+        return current.data  
+
 
      
 
