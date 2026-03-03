@@ -16,3 +16,10 @@ class ListStack:
     def push(self, item: Any) -> None:
         # Add a new item to the top of the stack
         self.items.append(item)
+
+    def pop(self) -> Any:
+        # Remove and return the top item from the stack
+        # Raises an IndexError if the stack is empty
+        if self.is_empty():
+            raise IndexError("pop from Empty Stack")
+        return self.items.pop()
