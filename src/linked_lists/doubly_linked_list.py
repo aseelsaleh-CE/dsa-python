@@ -61,6 +61,28 @@ class DoublyLinkedList:
             current.next.prev = new_node
         current.next = new_node
         self.size += 1
+    
+    def delete(self, data: Any) -> bool:
+        # Delete the first occurrence of a value
+        current = self.head
+        while current:
+            if current.data == data:
+                if current == self.head:
+                    self.head = current.next
+                    if self.head:
+                        self.head.prev = None
+                    else:
+                        self.tail = None
+                elif current == self.tail:
+                    self.tail = current.prev
+                    self.tail.next = None  # type: ignore
+                else:
+                    current.prev.next = current.next
+                    current.next.prev = current.prev
+                self.size -= 1
+                return True
+            current = current.next
+        return False
 
      
 
