@@ -108,3 +108,12 @@ class LinkedList:
         while current:
             action(current.data)
             current = current.next
+
+    def map(self, transform: Callable[[Any], Any]) -> "LinkedList":
+        """Creates a new list by transforming each element with the provided function."""
+        new_list = LinkedList()
+        current = self.head
+        while current:
+            new_list.append(transform(current.data))
+            current = current.next
+        return new_list
