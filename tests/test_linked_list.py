@@ -78,14 +78,14 @@ def test_clear():
     assert ll.length == 0
 
 
-# def test_contains():
-#     ll = LinkedList()
+def test_contains():
+    ll = LinkedList()
 
-#     ll.append("a")
-#     ll.append("b")
+    ll.append("a")
+    ll.append("b")
 
-#     assert ll.contains("a") is True
-#     assert ll.contains("z") is False
+    assert ll.contains("a") is True
+    assert ll.contains("z") is False
 
 
 # def test_index_of():
