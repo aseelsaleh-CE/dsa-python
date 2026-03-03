@@ -52,3 +52,10 @@ class LinkedQueue:
         self.tail = None
         self.count = 0
     
+    def front(self) -> Any:
+        # Return the data of the first node without removing it
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self.head.data
+    
+
