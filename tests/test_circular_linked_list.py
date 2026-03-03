@@ -50,3 +50,23 @@ def test_contains_non_existing_value():
     cll.insert(5)
 
     assert cll.contains(100) is False
+
+
+def test_getAt_valid_index():
+    cll = CircularLinkedList()
+    cll.insert("A")
+    cll.insert("B")
+    cll.insert("C")
+
+    assert cll.getAt(0) == "A"
+    assert cll.getAt(1) == "B"
+    assert cll.getAt(2) == "C"
+
+
+def test_getAt_invalid_index():
+    cll = CircularLinkedList()
+    cll.insert(1)
+
+    with pytest.raises(IndexError):
+        cll.getAt(5)
+
