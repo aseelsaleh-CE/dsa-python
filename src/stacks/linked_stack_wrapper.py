@@ -16,3 +16,9 @@ class Stack:
     def push(self, data: Any) -> None:
         #Adds an element to the top of the stack.
         self.list.add(data)
+    
+    def pop(self) -> Any:
+        #Removes and returns the top element
+        if self.is_empty():
+            raise IndexError("Pop from empty stack")
+        return self.list.remove_at(0)
