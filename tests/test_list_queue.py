@@ -28,22 +28,9 @@ def test_clear_queue():
     assert queue.size() == 0
     assert queue.is_empty() is True
 
-
-# def test_clear_list(l_queue):
-#     l_queue.enqueue(100)
-#     l_queue.clear()
-#     assert l_queue.is_empty() is True
-#     assert len(l_queue.items) == 0
-
-# def test_empty_exception(l_queue):
-#     with pytest.raises(Exception) as excinfo:
-#         l_queue.dequeue()
-#     assert "Queue is empty" in str(excinfo.value)
-
-
-# def test_front_method(l_queue):
-#     l_queue.enqueue("A")
-#     l_queue.enqueue("B")
-    
-#     assert l_queue.front() == "A"
-#     assert l_queue.size == 2  
+def test_front_element():
+    queue = ListQueue()
+    queue.enqueue("First")
+    queue.enqueue("Second")
+    assert queue.front() == "First"
+    assert queue.size() == 2 
