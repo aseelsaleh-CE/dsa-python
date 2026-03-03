@@ -12,3 +12,7 @@ class ListStack:
     def is_empty(self) -> bool:
         # Check if the stack has no items; returns True if empty, False otherwise
         return len(self.items) == 0
+    
+    def push(self, item: Any) -> None:
+        # Add a new item to the top of the stack
+        self.items.append(item)
