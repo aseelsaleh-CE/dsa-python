@@ -28,3 +28,14 @@ class CircularLinkedList:
             self.tail = new_node
             self.tail.next = self.head
         self.size += 1
+
+    def contains(self, value: Any) -> bool:
+        if not self.head:
+            return False
+        
+        current = self.head
+        for _ in range(self.size):
+            if current.data == value:
+                return True
+            current = current.next
+        return False
