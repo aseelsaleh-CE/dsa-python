@@ -75,3 +75,15 @@ class CircularLinkedList:
             current = current.next
             
         return False
+    
+    def print_list(self) -> None:
+        if not self.head:
+            print("List is empty")
+            return
+
+        current = self.head
+        elements = []
+        for _ in range(self.size):
+            elements.append(str(current.data))
+            current = current.next
+        print(" -> ".join(elements) + " -> (Back to Head)")
