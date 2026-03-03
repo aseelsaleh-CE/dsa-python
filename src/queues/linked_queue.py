@@ -11,4 +11,37 @@ class LinkedQueue:
         # Initialize an empty linked queue with head, tail, and count
         self.head: Optional[Node] = None
         self.tail: Optional[Node] = None
-        self.size: int = 0
+        self.count: int = 0
+
+    def is_empty(self) -> bool:
+        # Return True if the queue has no nodes
+        return self.head is None
+
+    def size(self) -> int:
+        # Return the current number of elements in the queue
+        return self.count
+    
+    def enqueue(self, item: Any) -> None:
+        # Add a new node with data to the end of the queue
+        new_node = Node(item)
+        if self.tail:
+            self.tail.next = new_node
+        self.tail = new_node
+        if self.head is None:
+            self.head = self.tail
+        self.count += 1
+    def dequeue(self) -> Any:
+        # Remove and return the data from the front node
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        
+        # We know head is not None because of is_empty check
+        data: Any = self.head.data 
+        self.head = self.head.next
+        
+        if self.head is None:
+            self.tail = None
+            
+        self.count -= 1
+        return data
+    
