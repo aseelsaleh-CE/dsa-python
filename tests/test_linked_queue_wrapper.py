@@ -44,3 +44,12 @@ def test_str_representation():
     q.enqueue("B")
     assert "A" in str(q)
     assert "B" in str(q)
+
+def test_empty_queue_exceptions():
+    q = Queue()
+    
+    with pytest.raises(IndexError, match="Dequeue from empty queue"):
+        q.dequeue()
+        
+    with pytest.raises(IndexError, match="Peek from empty queue"):
+        q.peek()
