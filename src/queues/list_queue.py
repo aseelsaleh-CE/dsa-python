@@ -25,3 +25,10 @@ class ListQueue:
     def clear(self):
         # Remove all elements from the queue to make it empty
         self.items = []
+    
+    def front(self):
+        # Return the value of the first element without removing it
+        # Raises an exception if the queue is empty
+        if self.is_empty():
+            raise Exception("Queue is empty")
+        return self.items[0]
