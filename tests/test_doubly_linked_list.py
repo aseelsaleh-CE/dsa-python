@@ -48,51 +48,51 @@ def test_insert_at_middle():
     assert len(dll) == 3
 
 
-# def test_delete_by_value():
-#     dll = DoublyLinkedList()
-#     dll.insert_at_tail("A")
-#     dll.insert_at_tail("B")
-#     dll.insert_at_tail("C")
+def test_delete_by_value():
+    dll = DoublyLinkedList()
+    dll.insert_at_tail("A")
+    dll.insert_at_tail("B")
+    dll.insert_at_tail("C")
     
-#     assert dll.delete("B") is True
-#     assert len(dll) == 2
-#     assert dll.head.next.data == "C"
-#     assert dll.tail.prev.data == "A"
+    assert dll.delete("B") is True
+    assert len(dll) == 2
+    assert dll.head.next.data == "C"
+    assert dll.tail.prev.data == "A"
     
-#     assert dll.delete("A") is True
-#     assert dll.head.data == "C"
-#     assert dll.head.prev is None
-#     assert len(dll) == 1
+    assert dll.delete("A") is True
+    assert dll.head.data == "C"
+    assert dll.head.prev is None
+    assert len(dll) == 1
     
-#     assert dll.delete("C") is True
-#     assert dll.head is None
-#     assert dll.tail is None
-#     assert len(dll) == 0
+    assert dll.delete("C") is True
+    assert dll.head is None
+    assert dll.tail is None
+    assert len(dll) == 0
     
-#     assert dll.delete("Z") is False
-#     assert len(dll) == 0
+    assert dll.delete("Z") is False
+    assert len(dll) == 0
 
 
-# def test_delete_from_empty_list():
-#     dll = DoublyLinkedList()
-#     assert dll.delete(10) is False
+def test_delete_from_empty_list():
+    dll = DoublyLinkedList()
+    assert dll.delete(10) is False
 
 
-# def test_get_at_functionality():
-#     dll = DoublyLinkedList()
+def test_get_at_functionality():
+    dll = DoublyLinkedList()
     
-#     assert dll.get_at(0) is None
+    assert dll.get_at(0) is None
     
-#     dll.insert_at_tail("Python")
-#     dll.insert_at_tail("Java")
-#     dll.insert_at_tail("C++")
+    dll.insert_at_tail("Python")
+    dll.insert_at_tail("Java")
+    dll.insert_at_tail("C++")
     
-#     assert dll.get_at(0) == "Python"
-#     assert dll.get_at(1) == "Java"
-#     assert dll.get_at(2) == "C++"
+    assert dll.get_at(0) == "Python"
+    assert dll.get_at(1) == "Java"
+    assert dll.get_at(2) == "C++"
     
-#     assert dll.get_at(3) is None
-#     assert dll.get_at(-1) is None
+    assert dll.get_at(3) is None
+    assert dll.get_at(-1) is None
 
 
 # def test_contains_logic():
