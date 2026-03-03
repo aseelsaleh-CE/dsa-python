@@ -39,3 +39,9 @@ class LinkedStack:
         self.top = self.top.next
         self.count -= 1
         return data
+    
+    def peek(self) -> Optional[Any]:
+        # Return the data of the top node without removing it
+        if not self.is_empty():
+            return self.top.data
+        return None
