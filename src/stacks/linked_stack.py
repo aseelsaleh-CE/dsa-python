@@ -45,3 +45,8 @@ class LinkedStack:
         if not self.is_empty():
             return self.top.data
         return None
+    
+    def clear(self) -> None:
+        # Reset the stack by removing the reference to the top node
+        self.top = None
+        self.count = 0
