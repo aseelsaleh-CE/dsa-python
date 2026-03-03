@@ -27,3 +27,13 @@ def test_peek_operation():
     
     assert q.peek() == "Apple"
     assert q.size() == 2  
+
+def test_queue_clear():
+
+    q = Queue()
+    q.enqueue(100)
+    q.enqueue(200)
+    q.clear()
+    
+    assert q.size() == 0
+    assert q.is_empty() is True
