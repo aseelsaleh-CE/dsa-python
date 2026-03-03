@@ -5,18 +5,21 @@ class Node:
         self.data = data
         self.next: Optional['Node'] = None
 
+
 class CircularLinkedList:
     def __init__(self) -> None:
         self.head: Optional[Node] = None
         self.tail: Optional[Node] = None
         self.size = 0
 
+    # Check if list is empty
     def is_empty(self) -> bool:
         return self.head is None
-    
+    # Return list length
     def length(self) -> int:
         return self.size
     
+    # Insert at end
     def insert(self, data: Any) -> None:
         new_node = Node(data)
         if self.is_empty():
@@ -29,26 +32,29 @@ class CircularLinkedList:
             self.tail.next = self.head
         self.size += 1
 
+    # Check if value exists
     def contains(self, value: Any) -> bool:
         if not self.head:
             return False
-        
+
         current = self.head
         for _ in range(self.size):
             if current.data == value:
                 return True
             current = current.next
         return False
-    
+
+    # Get element at index
     def getAt(self, index: int) -> Any:
         if index < 0 or index >= self.size:
             raise IndexError("Index out of range")
-        
+
         current = self.head
         for _ in range(index):
             current = current.next
         return current.data
-    
+
+    # Delete element by value
     def delete(self, value: Any) -> bool:
         if not self.head:
             return False
@@ -58,6 +64,7 @@ class CircularLinkedList:
 
         for _ in range(self.size):
             if current.data == value:
+                # only one node
                 if self.size == 1:
                     self.head = None
                     self.tail = None
@@ -67,15 +74,16 @@ class CircularLinkedList:
                         self.head = current.next
                     if current == self.tail:
                         self.tail = prev
-                
+
                 self.size -= 1
                 return True
-            
+
             prev = current
             current = current.next
-            
+
         return False
-    
+
+    # Print list safely
     def print_list(self) -> None:
         if not self.head:
             print("List is empty")
