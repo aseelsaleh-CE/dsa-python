@@ -6,6 +6,7 @@ def test_push_operation():
     stack = Stack()
     stack.push(10)
     stack.push(20)
+    assert stack.size() == 2
 
 def test_is_empty_and_size():
     # Test the empty state and size tracking
@@ -14,4 +15,13 @@ def test_is_empty_and_size():
     stack.push(5)
     assert stack.is_empty() is False
     assert stack.size() == 1
+
+def test_pop_operation():
+    # Test if the last added element is the first one to be removed (LIFO)
+    stack = Stack()
+    stack.push("A")
+    stack.push("B")
+    assert stack.pop() == "B"
+    assert stack.pop() == "A"
+    assert stack.is_empty() is True
    
