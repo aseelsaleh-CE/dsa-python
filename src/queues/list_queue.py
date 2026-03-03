@@ -14,3 +14,10 @@ class ListQueue:
     def enqueue(self, item):
         # Add a new element to the back (end) of the queue
         self.items.append(item)
+
+    def dequeue(self):
+        # Remove and return the first element (front) of the queue (FIFO)
+        # Raises an exception if the queue is empty
+        if self.is_empty():
+            raise Exception("Queue is empty")
+        return self.items.pop(0)
