@@ -36,3 +36,17 @@ def test_insert_multiple_elements():
         current = current.next
 
     assert result == values
+def test_contains_existing_value():
+    cll = CircularLinkedList()
+    cll.insert(5)
+    cll.insert(10)
+
+    assert cll.contains(5) is True
+    assert cll.contains(10) is True
+
+
+def test_contains_non_existing_value():
+    cll = CircularLinkedList()
+    cll.insert(5)
+
+    assert cll.contains(100) is False
