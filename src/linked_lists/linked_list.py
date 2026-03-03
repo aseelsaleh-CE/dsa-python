@@ -128,3 +128,15 @@ class LinkedList:
                 new_list.append(current.data)
             current = current.next
         return new_list
+    
+    def __str__(self) -> str:
+        """Returns a string representation of the list for easy debugging."""
+        if not self.head:
+            return "Empty List"
+
+        nodes = []
+        current = self.head
+        while current:
+            nodes.append(str(current.data))
+            current = current.next
+        return " -> ".join(nodes)
