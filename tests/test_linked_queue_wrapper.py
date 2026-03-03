@@ -37,3 +37,10 @@ def test_queue_clear():
     
     assert q.size() == 0
     assert q.is_empty() is True
+
+def test_str_representation():
+    q = Queue()
+    q.enqueue("A")
+    q.enqueue("B")
+    assert "A" in str(q)
+    assert "B" in str(q)
