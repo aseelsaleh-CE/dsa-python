@@ -30,3 +30,7 @@ class ListStack:
         if self.is_empty():
             return None
         return self.items[-1]
+    
+    def clear(self) -> None:
+        # Remove all items from the stack, making it empty
+        self.items.clear()
