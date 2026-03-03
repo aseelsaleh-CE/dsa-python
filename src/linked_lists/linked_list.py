@@ -75,3 +75,9 @@ class LinkedList:
 
         self.length -= 1
         return removed_data
+    
+
+    def clear(self) -> None:
+        """Removes all elements from the list."""
+        self.head = None
+        self.length = 0
