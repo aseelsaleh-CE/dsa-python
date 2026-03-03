@@ -22,3 +22,9 @@ class Stack:
         if self.is_empty():
             raise IndexError("Pop from empty stack")
         return self.list.remove_at(0)
+    
+    def peek(self) -> Any:
+        #Returns the top element without removing it.
+        if self.is_empty():
+            raise IndexError("Peek from empty stack")
+        return self.list.head.data
