@@ -14,3 +14,7 @@ class Queue:
     def size(self) -> int:
         #Returns number of elements.
         return self.list.get_length()
+
+    def is_empty(self) -> bool:
+        #Checks if the queue is empty
+        return self._list.get_length() == 0
