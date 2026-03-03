@@ -6,9 +6,12 @@ def test_queue_operation():
 
     assert l_queue.size() == 0
     
-# def test_enqueue_list(l_queue):
-#     l_queue.enqueue("First")
-#     l_queue.enqueue("Second")
+def test_enqueue_and_size():
+    queue = ListQueue()
+    queue.enqueue("A")
+    queue.enqueue("B")
+    assert queue.size() == 2
+    assert queue.is_empty() is False
 
 # def test_dequeue_list(l_queue):
 #     l_queue.enqueue(1)
