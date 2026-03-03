@@ -50,3 +50,10 @@ def test_clear_method():
     assert queue.tail is None
     assert queue.is_empty() is True
     print("test_clear_method passed!")
+
+def test_front():
+    queue = LinkedQueue()
+    queue.enqueue(10)
+    queue.enqueue(20)
+    assert queue.front() == 10
+    print("test_front passed!")
