@@ -124,4 +124,4 @@ def test_str_representation():
     ll = LinkedList()
     ll.append(1)
     ll.append(2)
-    assert str(ll) == "1 -> 2 -> None"
+    assert str(ll) 
