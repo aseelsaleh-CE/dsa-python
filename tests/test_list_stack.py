@@ -1,9 +1,12 @@
 import pytest
-from src.stacks.list_stack import ListStack 
+from src.stacks.list_stack import ListStack
+
+
 def test_push():
     s = ListStack()
     s.push(1)
     assert s.size() == 1
+
 
 def test_pop_single_element():
     s = ListStack()
@@ -12,11 +15,13 @@ def test_pop_single_element():
     assert popped_value == 'A'
     assert s.is_empty() is True
 
+
 def test_peek_functionality():
     s = ListStack()
     s.push('Python')
     assert s.peek() == 'Python'
     assert s.size() == 1
+
 
 def test_clear_stack():
     s = ListStack()
