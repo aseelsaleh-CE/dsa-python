@@ -39,3 +39,18 @@ def test_peek():
     stack.push(50)
     assert stack.peek() == 50
     assert stack.size() == 1
+
+def test_stack_clear():
+
+    stack = LinkedStack()
+    stack.push(10)
+    stack.push(20)
+    stack.push(30)
+    assert stack.size() == 3
+    
+    stack.clear()
+    
+    assert stack.size() == 0
+    assert stack.is_empty() is True
+    assert stack.top is None
+    assert stack.peek() is None
