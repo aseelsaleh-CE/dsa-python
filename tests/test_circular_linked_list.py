@@ -123,5 +123,22 @@ def test_delete_non_existing_value():
 
     assert cll.delete(100) is False
     assert cll.length() == 2
+    
+def test_print_list_empty(capsys):
+    cll = CircularLinkedList()
+    cll.print_list()
 
+    captured = capsys.readouterr()
+    assert "List is empty" in captured.out
+
+
+def test_print_list_non_empty(capsys):
+    cll = CircularLinkedList()
+    cll.insert(1)
+    cll.insert(2)
+
+    cll.print_list()
+    captured = capsys.readouterr()
+
+    assert "1 -> 2 -> (Back to Head)" in captured.out
 
