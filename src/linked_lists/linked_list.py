@@ -117,3 +117,14 @@ class LinkedList:
             new_list.append(transform(current.data))
             current = current.next
         return new_list
+    
+
+    def where(self, test: Callable[[Any], bool]) -> "LinkedList":
+        """Filters the list and returns a new list containing elements that match the condition."""
+        new_list = LinkedList()
+        current = self.head
+        while current:
+            if test(current.data):
+                new_list.append(current.data)
+            current = current.next
+        return new_list
