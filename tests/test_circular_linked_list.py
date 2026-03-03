@@ -1,9 +1,9 @@
 import pytest
 from src.linked_lists.circular_linked_list import CircularLinkedList
 
-
-def test_insert_and_cycle():
+def test_new_list_is_empty():
     cll = CircularLinkedList()
-    cll.append(1)
-    cll.append(2)
-    assert cll.head.next.next == cll.head
+    assert cll.is_empty() is True
+    assert cll.head is None
+    assert cll.tail is None
+    assert cll.size == 0
