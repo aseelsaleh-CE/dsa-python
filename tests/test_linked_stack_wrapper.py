@@ -42,3 +42,11 @@ def test_clear_stack():
     stack.clear()
     assert stack.size() == 0
     assert stack.is_empty() is True
+
+def test_string_representation():
+    # Test if the __str__ method works (based on your LinkedList __str__)
+    stack = Stack()
+    stack.push(1)
+    stack.push(2)
+    # Since your LinkedList 'add' prepends, the output should show 2 -> 1
+    assert "2 -> 1" in str(stack)
