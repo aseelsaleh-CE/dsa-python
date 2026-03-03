@@ -13,13 +13,13 @@ def test_enqueue_and_size():
     assert queue.size() == 2
     assert queue.is_empty() is False
 
-# def test_dequeue_list(l_queue):
-#     l_queue.enqueue(1)
-#     l_queue.enqueue(2)
-#     val = l_queue.dequeue()
-#     assert val == 1
-#     assert l_queue.size == 1
-#     assert l_queue.items == [2]
+def test_dequeue_order():
+    queue = ListQueue()
+    queue.enqueue(1)
+    queue.enqueue(2)
+    assert queue.dequeue() == 1
+    assert queue.dequeue() == 2
+    assert queue.is_empty() is True
 
 
 # def test_clear_list(l_queue):
