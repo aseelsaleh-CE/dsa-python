@@ -70,3 +70,58 @@ def test_getAt_invalid_index():
     with pytest.raises(IndexError):
         cll.getAt(5)
 
+
+def test_delete_only_element():
+    cll = CircularLinkedList()
+    cll.insert(10)
+
+    assert cll.delete(10) is True
+    assert cll.length() == 0
+    assert cll.head is None
+    assert cll.tail is None
+
+
+def test_delete_head():
+    cll = CircularLinkedList()
+    cll.insert(1)
+    cll.insert(2)
+    cll.insert(3)
+
+    assert cll.delete(1) is True
+    assert cll.length() == 2
+    assert cll.head.data == 2
+    assert cll.tail.next == cll.head
+
+
+def test_delete_tail():
+    cll = CircularLinkedList()
+    cll.insert(1)
+    cll.insert(2)
+    cll.insert(3)
+
+    assert cll.delete(3) is True
+    assert cll.length() == 2
+    assert cll.tail.data == 2
+    assert cll.tail.next == cll.head
+
+
+def test_delete_middle():
+    cll = CircularLinkedList()
+    cll.insert(1)
+    cll.insert(2)
+    cll.insert(3)
+
+    assert cll.delete(2) is True
+    assert cll.length() == 2
+    assert cll.contains(2) is False
+
+
+def test_delete_non_existing_value():
+    cll = CircularLinkedList()
+    cll.insert(1)
+    cll.insert(2)
+
+    assert cll.delete(100) is False
+    assert cll.length() == 2
+
+
