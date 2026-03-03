@@ -17,3 +17,16 @@ def test_peek_functionality():
     s.push('Python')
     assert s.peek() == 'Python'
     assert s.size() == 1
+
+def test_clear_stack():
+    s = ListStack()
+    s.push(10)
+    s.push(20)
+    s.push(30)
+    assert s.size() == 3
+    
+    s.clear()
+    
+    assert s.size() == 0
+    assert s.is_empty() is True
+    assert s.peek() is None
