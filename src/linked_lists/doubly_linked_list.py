@@ -92,6 +92,15 @@ class DoublyLinkedList:
         for _ in range(index):
             current = current.next  
         return current.data  
+    
+    def contains(self, data: Any) -> bool:
+        # Check if value exists in the list
+        current = self.head
+        while current:
+            if current.data == data:
+                return True
+            current = current.next
+        return False
 
 
      
