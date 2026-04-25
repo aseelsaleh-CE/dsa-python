@@ -1,0 +1,9 @@
+{
+  "dsa-python/tests/test_stack_linked_stack.py": true,
+  "dsa-python/tests/test_list_stack.py": true,
+  "dsa-python/tests/test_doubly_linked_list.py": true,
+  "dsa-python/tests/test_linked_list.py": true,
+  "tests/test_linked_list.py::test_linked_test_creation": true,
+  "tests/test_circular_linked_list.py::test_insert_and_cycle": true,
+  "tests/test_linked_stack_wrapper.py::test_pop_empty_stack": true
+}

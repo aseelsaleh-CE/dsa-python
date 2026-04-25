@@ -1,6 +1,6 @@
 from src.queues.list_queue import ListQueue
 from src.queues.linked_queue import LinkedQueue
-from src.queues.doubly_linked_list_queue import DLLQueue
+from queues.linked_queue_wrapper import DLLQueue
 
 print("Testing Queue using List:")
 q1 = ListQueue()
