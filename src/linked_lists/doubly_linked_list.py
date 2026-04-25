@@ -128,3 +128,29 @@ class DoublyLinkedList:
             elements.append(str(current.data))
             current = current.prev
         print(" <-> ".join(elements))
+
+
+    def remove_at(self, index: int):
+        if not self.head:
+            return
+
+        current = self.head
+        i = 0
+
+        if index == 0:
+            self.head = current.next
+            if self.head:
+                self.head.prev = None
+            return
+
+        while current and i < index:
+            current = current.next
+            i += 1
+
+        if not current:
+            return
+
+        if current.prev:
+            current.prev.next = current.next
+        if current.next:
+            current.next.prev = current.prev
