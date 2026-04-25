@@ -153,3 +153,16 @@ class LinkedList:
 
         return new_linked_list
     
+
+    def where_at(self, index: int):
+        current = self.head
+        current_index = 0
+
+        while current:
+            if current_index == index:
+                return current
+
+            current = current.next
+            current_index += 1
+
+        return None
