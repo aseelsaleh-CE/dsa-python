@@ -176,3 +176,20 @@ class LinkedList:
             fast = fast.next.next
 
         return slow
+    
+    
+    def insert_sorted(self, data):
+        new_node = Node(data)
+
+        if not self.head or data < self.head.data:
+            new_node.next = self.head
+            self.head = new_node
+            return
+
+        current = self.head
+
+        while current.next and current.next.data < data:
+            current = current.next
+
+        new_node.next = current.next
+        current.next = new_node
