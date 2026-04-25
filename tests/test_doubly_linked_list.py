@@ -167,3 +167,19 @@ def test_remove_at():
         current = current.next
 
     assert values == [4, 3, 1]
+
+def double(x):
+    return x * 2
+
+def test_map_function():
+    dll = DoublyLinkedList()
+    dll.insert_at_tail(1)
+    dll.insert_at_tail(2)
+    dll.insert_at_tail(3)
+
+    new_dll = dll.map(double)
+
+    assert new_dll.head.data == 2
+    assert new_dll.head.next.data == 4
+    assert new_dll.head.next.next.data == 6
+    assert new_dll.head.next.next.next is None
