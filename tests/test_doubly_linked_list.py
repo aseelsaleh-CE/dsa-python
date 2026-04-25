@@ -149,3 +149,21 @@ def test_print_backward_empty(capsys):
 
     captured = capsys.readouterr()
     assert captured.out.strip() == "Empty List"
+
+def test_remove_at():
+    dll = DoublyLinkedList()
+    dll.insert_at_head(1)
+    dll.insert_at_head(2)
+    dll.insert_at_head(3)
+    dll.insert_at_head(4)
+
+    dll.remove_at(2)  
+
+    values = []
+    current = dll.head
+
+    while current:
+        values.append(current.data)
+        current = current.next
+
+    assert values == [4, 3, 1]
