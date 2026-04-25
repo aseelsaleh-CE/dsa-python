@@ -117,15 +117,15 @@ class LinkedList:
             current = current.next
         return new_list
 
-    def where(self, test: Callable[[Any], bool]) -> "LinkedList":
-        #Filters the list and returns a new list containing elements that match the condition.
-        new_list = LinkedList()
-        current = self.head
-        while current:
-            if test(current.data):
-                new_list.append(current.data)
-            current = current.next
-        return new_list
+    # def where(self, test: Callable[[Any], bool]) -> "LinkedList":
+    #     #Filters the list and returns a new list containing elements that match the condition.
+    #     new_list = LinkedList()
+    #     current = self.head
+    #     while current:
+    #         if test(current.data):
+    #             new_list.append(current.data)
+    #         current = current.next
+    #     return new_list
 
     def __str__(self) -> str:
        #Returns a string representation of the list for easy debugging.
@@ -137,4 +137,19 @@ class LinkedList:
         while current:
             nodes.append(str(current.data))
             current = current.next
+
         return " -> ".join(nodes)
+
+    
+
+    def where(self, predicate_func) -> LinkedList:
+        new_linked_list = LinkedList()
+        current = self.head
+
+        while current:
+            if predicate_func(current.data):
+                new_linked_list.append(current.data)
+            current = current.next
+
+        return new_linked_list
+    

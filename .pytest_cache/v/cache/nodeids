@@ -57,6 +57,8 @@
   "tests/test_linked_list.py::test_remove_at",
   "tests/test_linked_list.py::test_str_representation",
   "tests/test_linked_list.py::test_where",
+  "tests/test_linked_list.py::test_where_even_numbers",
+  "tests/test_linked_list.py::test_where_no_match",
   "tests/test_linked_queue.py::test_clear_method",
   "tests/test_linked_queue.py::test_dequeue",
   "tests/test_linked_queue.py::test_enqueue",
