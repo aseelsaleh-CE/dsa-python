@@ -174,3 +174,16 @@ def test_where_at_valid_index():
 
     assert node is not None
     assert node.data == 30
+
+def test_find_middle_odd():
+    lst = LinkedList()
+    lst.append(1)
+    lst.append(2)
+    lst.append(3)
+    lst.append(4)
+    lst.append(5)
+
+    middle = lst.find_middle()
+
+    assert middle is not None
+    assert middle.data == 3
