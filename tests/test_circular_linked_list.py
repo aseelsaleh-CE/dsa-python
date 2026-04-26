@@ -235,3 +235,33 @@ def test_is_circular_true():
 def test_is_circular_empty():
     cll = CircularLinkedList()
     assert cll.is_circular() is False
+
+
+def test_copy_circular():
+    cll = CircularLinkedList()
+    cll.insert(1)
+    cll.insert(2)
+    cll.insert(3)
+
+    copied = cll.copy_circular()
+
+    values_original = []
+    values_copied = []
+
+    current = cll.head
+    start = cll.head
+    while True:
+        values_original.append(current.data)
+        current = current.next
+        if current == start:
+            break
+
+    current = copied.head
+    start = copied.head
+    while True:
+        values_copied.append(current.data)
+        current = current.next
+        if current == start:
+            break
+
+    assert values_original == values_copied
