@@ -191,7 +191,8 @@ def test_rotate_zero():
             break
 
     assert values == [1, 2, 3]
-    
+
+
 def test_flatten_multiple():
     sub1 = CircularLinkedList()
     sub1.insert(2)
@@ -220,3 +221,17 @@ def test_flatten_multiple():
             break
 
     assert values == [1, 2, 3, 4, 6, 5]
+
+
+def test_is_circular_true():
+    cll = CircularLinkedList()
+    cll.insert(1)
+    cll.insert(2)
+    cll.insert(3)
+
+    assert cll.is_circular() is True
+
+
+def test_is_circular_empty():
+    cll = CircularLinkedList()
+    assert cll.is_circular() is False
