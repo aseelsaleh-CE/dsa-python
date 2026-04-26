@@ -191,3 +191,32 @@ def test_rotate_zero():
             break
 
     assert values == [1, 2, 3]
+    
+def test_flatten_multiple():
+    sub1 = CircularLinkedList()
+    sub1.insert(2)
+    sub1.insert(3)
+
+    sub2 = CircularLinkedList()
+    sub2.insert(6)
+
+    cll = CircularLinkedList()
+    cll.insert(1)
+    cll.insert(sub1)
+    cll.insert(4)
+    cll.insert(sub2)
+    cll.insert(5)
+
+    cll.flatten()
+
+    values = []
+    current = cll.head
+    start = cll.head
+
+    while True:
+        values.append(current.data)
+        current = current.next
+        if current == start:
+            break
+
+    assert values == [1, 2, 3, 4, 6, 5]
