@@ -154,3 +154,22 @@ class DoublyLinkedList:
                 current.prev.next = current.next
             if current.next:
                 current.next.prev = current.prev
+
+
+    
+    def map(self, transform_func):
+        new_list_dll = DoublyLinkedList()
+        current = self.head
+
+        while current:
+            new_value = transform_func(current.data)
+            new_list_dll.insert_at_tail(new_value)
+            current = current.next
+
+        return new_list_dll
+
+
+
+
+
+
