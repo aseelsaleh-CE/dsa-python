@@ -198,3 +198,31 @@ def test_fold_sum():
     result = dll.fold(add, 0)
 
     assert result == 6
+
+
+def test_split_at():
+    dll = DoublyLinkedList()
+    dll.insert_at_tail(1)
+    dll.insert_at_tail(2)
+    dll.insert_at_tail(3)
+    dll.insert_at_tail(4)
+    dll.insert_at_tail(5)
+
+    first, second = dll.split_at(2)
+
+    current = first.head
+    values_first = []
+
+    while current:
+        values_first.append(current.data)
+        current = current.next
+
+    current = second.head
+    values_second = []
+
+    while current:
+        values_second.append(current.data)
+        current = current.next
+
+    assert values_first == [1, 2]
+    assert values_second == [3, 4, 5]
