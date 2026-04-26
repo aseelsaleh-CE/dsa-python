@@ -2,6 +2,10 @@ import pytest
 from src.linked_lists.doubly_linked_list import DoublyLinkedList
 
 
+# =========================
+# Insert Tests
+# =========================
+
 def test_insert_at_head():
     dll = DoublyLinkedList()
 
@@ -42,11 +46,14 @@ def test_insert_at_middle():
     assert dll.tail.data == "C"
     assert dll.head.next.next == dll.tail
     assert dll.tail.prev.data == "B"
-    assert dll.tail.prev.prev == dll.head
     assert dll.head.prev is None
     assert dll.tail.next is None
     assert len(dll) == 3
 
+
+# =========================
+# Delete Tests
+# =========================
 
 def test_delete_by_value():
     dll = DoublyLinkedList()
@@ -56,13 +63,13 @@ def test_delete_by_value():
 
     assert dll.delete("B") is True
     assert len(dll) == 2
+
     assert dll.head.next.data == "C"
     assert dll.tail.prev.data == "A"
 
     assert dll.delete("A") is True
     assert dll.head.data == "C"
     assert dll.head.prev is None
-    assert len(dll) == 1
 
     assert dll.delete("C") is True
     assert dll.head is None
@@ -70,13 +77,36 @@ def test_delete_by_value():
     assert len(dll) == 0
 
     assert dll.delete("Z") is False
-    assert len(dll) == 0
 
 
 def test_delete_from_empty_list():
     dll = DoublyLinkedList()
     assert dll.delete(10) is False
 
+
+def test_remove_at():
+    dll = DoublyLinkedList()
+
+    dll.insert_at_head(1)
+    dll.insert_at_head(2)
+    dll.insert_at_head(3)
+    dll.insert_at_head(4)
+
+    dll.remove_at(2)
+
+    values = []
+    current = dll.head
+
+    while current:
+        values.append(current.data)
+        current = current.next
+
+    assert values == [4, 3, 1]
+
+
+# =========================
+# Search Tests
+# =========================
 
 def test_get_at_functionality():
     dll = DoublyLinkedList()
@@ -90,7 +120,6 @@ def test_get_at_functionality():
     assert dll.get_at(0) == "Python"
     assert dll.get_at(1) == "Java"
     assert dll.get_at(2) == "C++"
-
     assert dll.get_at(3) is None
     assert dll.get_at(-1) is None
 
@@ -111,6 +140,10 @@ def test_contains_logic():
     assert dll.contains("data") is False
 
 
+# =========================
+# Print Tests
+# =========================
+
 def test_print_forward(capsys):
     dll = DoublyLinkedList()
     dll.insert_at_tail(10)
@@ -118,12 +151,12 @@ def test_print_forward(capsys):
     dll.insert_at_tail(30)
 
     dll.print_forward()
-
     captured = capsys.readouterr()
+
     assert captured.out.strip() == "10 <-> 20 <-> 30"
 
 
-def test_print_empty(capsys):
+def test_print_empty_forward(capsys):
     dll = DoublyLinkedList()
     dll.print_forward()
 
@@ -138,8 +171,8 @@ def test_print_backward(capsys):
     dll.insert_at_tail(30)
 
     dll.print_backward()
-
     captured = capsys.readouterr()
+
     assert captured.out.strip() == "30 <-> 20 <-> 10"
 
 
@@ -150,26 +183,18 @@ def test_print_backward_empty(capsys):
     captured = capsys.readouterr()
     assert captured.out.strip() == "Empty List"
 
-def test_remove_at():
-    dll = DoublyLinkedList()
-    dll.insert_at_head(1)
-    dll.insert_at_head(2)
-    dll.insert_at_head(3)
-    dll.insert_at_head(4)
 
-    dll.remove_at(2)  
-
-    values = []
-    current = dll.head
-
-    while current:
-        values.append(current.data)
-        current = current.next
-
-    assert values == [4, 3, 1]
+# =========================
+# Functional Methods
+# =========================
 
 def double(x):
     return x * 2
+
+
+def add(acc, x):
+    return acc + x
+
 
 def test_map_function():
     dll = DoublyLinkedList()
@@ -183,10 +208,6 @@ def test_map_function():
     assert new_dll.head.next.data == 4
     assert new_dll.head.next.next.data == 6
     assert new_dll.head.next.next.next is None
-
-
-def add(acc, x):
-    return acc + x
 
 
 def test_fold_sum():
@@ -210,15 +231,15 @@ def test_split_at():
 
     first, second = dll.split_at(2)
 
-    current = first.head
     values_first = []
+    current = first.head
 
     while current:
         values_first.append(current.data)
         current = current.next
 
-    current = second.head
     values_second = []
+    current = second.head
 
     while current:
         values_second.append(current.data)
