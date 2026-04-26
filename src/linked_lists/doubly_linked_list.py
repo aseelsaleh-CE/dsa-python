@@ -179,4 +179,20 @@ class DoublyLinkedList:
         return result
 
 
+    def split_at(self, index):
+        first = DoublyLinkedList()
+        second = DoublyLinkedList()
 
+        current = self.head
+        i = 0
+
+        while current and i < index:
+            first.insert_at_tail(current.data)
+            current = current.next
+            i += 1
+
+        while current:
+            second.insert_at_tail(current.data)
+            current = current.next
+
+        return first, second
