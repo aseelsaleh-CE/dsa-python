@@ -131,38 +131,26 @@ class DoublyLinkedList:
 
 
     def remove_at(self, index: int):
-        if not self.head:
-            return
+            if not self.head:
+                return
 
-        current = self.head
-        i = 0
+            current = self.head
+            i = 0
 
-        if index == 0:
-            self.head = current.next
-            if self.head:
-                self.head.prev = None
-            return
+            if index == 0:
+                self.head = current.next
+                if self.head:
+                    self.head.prev = None
+                return
 
-        while current and i < index:
-            current = current.next
-            i += 1
+            while current and i < index:
+                current = current.next
+                i += 1
 
-        if not current:
-            return
+            if not current:
+                return
 
-        if current.prev:
-            current.prev.next = current.next
-        if current.next:
-            current.next.prev = current.prev
-
-
-    def map(self, transform_func):
-        new_list_dll = DoublyLinkedList()
-        current = self.head
-
-        while current:
-            new_value = transform_func(current.data)
-            new_list_dll.insert_at_tail(new_value)
-            current = current.next
-
-        return new_list_dll
+            if current.prev:
+                current.prev.next = current.next
+            if current.next:
+                current.next.prev = current.prev
