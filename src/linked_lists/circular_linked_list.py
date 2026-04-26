@@ -95,3 +95,37 @@ class CircularLinkedList:
             elements.append(str(current.data))
             current = current.next
         print(" -> ".join(elements) + " -> (Back to Head)")
+
+
+
+    def rotate(self, k: int):
+        if not self.head or k == 0:
+            return
+
+        # Step 1: Calculate the length of the circular linked list
+        length = 1
+        current = self.head
+
+        while current.next != self.head:
+            current = current.next
+            length += 1
+
+        # Step 2: Reduce k to avoid unnecessary full rotations
+        k = k % length
+        if k == 0:
+            return
+
+        # Step 3: Move to the node just before the new head
+        current = self.head
+        for _ in range(k - 1):
+            current = current.next
+
+        # Step 4: Define new head and new tail
+        new_head = current.next
+        new_tail = current
+
+        # Step 5: Maintain circular structure
+        new_tail.next = new_head
+
+        # Step 6: Update head pointer
+        self.head = new_head
