@@ -193,3 +193,20 @@ class CircularLinkedList:
 
         # If we reach None, it's not circular
         return False
+    
+
+    def copy_circular(self):
+        if not self.head:
+            return None
+
+        new_list = CircularLinkedList()
+        current = self.head
+
+        while True:
+            new_list.insert(current.data)
+            current = current.next
+
+            if current == self.head:
+                break
+
+        return new_list
