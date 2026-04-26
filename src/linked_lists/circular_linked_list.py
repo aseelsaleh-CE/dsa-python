@@ -129,3 +129,49 @@ class CircularLinkedList:
 
         # Step 6: Update head pointer
         self.head = new_head
+
+
+    def flatten(self):
+        if not self.head:
+            return
+
+        current = self.head
+
+        while True:
+
+            if isinstance(current.data, CircularLinkedList):
+                sublist = current.data
+
+                # find sublist head & tail
+                sub_head = sublist.head
+                sub_tail = sublist.head
+
+                while sub_tail.next != sublist.head:
+                    sub_tail = sub_tail.next
+
+                # break circularity
+                sub_tail.next = None
+
+                # save next node in main list
+                next_node = current.next
+
+                # replace current node data with sublist head data
+                current.data = sub_head.data
+
+                # now link sublist nodes into main list
+                temp = sub_head.next
+
+                prev = current
+                while temp:
+                    new_node = Node(temp.data)
+                    prev.next = new_node
+                    prev = new_node
+                    temp = temp.next
+
+                # connect back to main list
+                prev.next = next_node
+
+            current = current.next
+
+            if current == self.head:
+                break
