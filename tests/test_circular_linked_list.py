@@ -170,3 +170,24 @@ def test_print_list_non_empty(capsys):
     captured = capsys.readouterr()
 
     assert "1 -> 2 -> (Back to Head)" in captured.out
+
+
+def test_rotate_zero():
+    cll = CircularLinkedList()
+    cll.insert(1)
+    cll.insert(2)
+    cll.insert(3)
+
+    cll.rotate(0)
+
+    values = []
+    current = cll.head
+    start = cll.head
+
+    while True:
+        values.append(current.data)
+        current = current.next
+        if current == start:
+            break
+
+    assert values == [1, 2, 3]
