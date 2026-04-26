@@ -168,8 +168,15 @@ class DoublyLinkedList:
 
         return new_list_dll
 
+    def fold(self, combine_func, initial):
+        result = initial
+        current = self.head
 
+        while current:
+            result = combine_func(result, current.data)
+            current = current.next
 
+        return result
 
 
 
