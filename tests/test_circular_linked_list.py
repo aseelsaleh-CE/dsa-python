@@ -2,21 +2,22 @@ import pytest
 from src.linked_lists.circular_linked_list import CircularLinkedList
 
 
-# -------------------------
-# Basic state tests
-# -------------------------
+# =========================
+# Basic State Tests
+# =========================
 
 def test_new_list_is_empty():
     cll = CircularLinkedList()
+
     assert cll.is_empty() is True
     assert cll.head is None
     assert cll.tail is None
     assert cll.size == 0
 
 
-# -------------------------
-# Insert tests
-# -------------------------
+# =========================
+# Insert Tests
+# =========================
 
 def test_insert_single_element():
     cll = CircularLinkedList()
@@ -48,9 +49,9 @@ def test_insert_multiple_elements():
     assert result == values
 
 
-# -------------------------
-# Contains tests
-# -------------------------
+# =========================
+# Contains Tests
+# =========================
 
 def test_contains_existing_value():
     cll = CircularLinkedList()
@@ -68,9 +69,9 @@ def test_contains_non_existing_value():
     assert cll.contains(100) is False
 
 
-# -------------------------
-# getAt tests
-# -------------------------
+# =========================
+# getAt Tests
+# =========================
 
 def test_getAt_valid_index():
     cll = CircularLinkedList()
@@ -91,9 +92,9 @@ def test_getAt_invalid_index():
         cll.getAt(5)
 
 
-# -------------------------
-# Delete tests
-# -------------------------
+# =========================
+# Delete Tests
+# =========================
 
 def test_delete_only_element():
     cll = CircularLinkedList()
@@ -149,9 +150,9 @@ def test_delete_non_existing_value():
     assert cll.length() == 2
 
 
-# -------------------------
-# Print list tests
-# -------------------------
+# =========================
+# Print List Tests
+# =========================
 
 def test_print_list_empty(capsys):
     cll = CircularLinkedList()
@@ -171,6 +172,10 @@ def test_print_list_non_empty(capsys):
 
     assert "1 -> 2 -> (Back to Head)" in captured.out
 
+
+# =========================
+# Rotate Tests
+# =========================
 
 def test_rotate_zero():
     cll = CircularLinkedList()
@@ -192,6 +197,10 @@ def test_rotate_zero():
 
     assert values == [1, 2, 3]
 
+
+# =========================
+# Flatten Tests
+# =========================
 
 def test_flatten_multiple():
     sub1 = CircularLinkedList()
@@ -223,6 +232,10 @@ def test_flatten_multiple():
     assert values == [1, 2, 3, 4, 6, 5]
 
 
+# =========================
+# is_circular Tests
+# =========================
+
 def test_is_circular_true():
     cll = CircularLinkedList()
     cll.insert(1)
@@ -237,6 +250,10 @@ def test_is_circular_empty():
     assert cll.is_circular() is False
 
 
+# =========================
+# copy_circular Tests
+# =========================
+
 def test_copy_circular():
     cll = CircularLinkedList()
     cll.insert(1)
@@ -250,6 +267,7 @@ def test_copy_circular():
 
     current = cll.head
     start = cll.head
+
     while True:
         values_original.append(current.data)
         current = current.next
@@ -258,6 +276,7 @@ def test_copy_circular():
 
     current = copied.head
     start = copied.head
+
     while True:
         values_copied.append(current.data)
         current = current.next
