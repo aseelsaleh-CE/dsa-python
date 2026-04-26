@@ -162,3 +162,15 @@ def test_where_even_numbers():
         current = current.next
 
     assert values == [2, 4]
+    
+def test_where_at_valid_index():
+    lst = LinkedList()
+    lst.append(10)
+    lst.append(20)
+    lst.append(30)
+    lst.append(40)
+
+    node = lst.where_at(2)
+
+    assert node is not None
+    assert node.data == 30
