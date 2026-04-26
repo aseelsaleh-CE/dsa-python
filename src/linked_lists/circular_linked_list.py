@@ -1,9 +1,10 @@
 from typing import Any, Optional
 
+
 class Node:
     def __init__(self, data: Any) -> None:
         self.data = data
-        self.next: Optional['Node'] = None
+        self.next: Optional["Node"] = None
 
 
 class CircularLinkedList:
@@ -12,49 +13,71 @@ class CircularLinkedList:
         self.tail: Optional[Node] = None
         self.size = 0
 
-    # Check if list is empty
+    # -------------------------
+    # Basic Helpers
+    # -------------------------
+
+    # Check if the list is empty
     def is_empty(self) -> bool:
         return self.head is None
-    # Return list length
+
+    # Return the number of nodes in the list
     def length(self) -> int:
         return self.size
-    
-    # Insert at end
+
+    # -------------------------
+    # Insertion
+    # -------------------------
+
+    # Insert a new node at the end of the list
     def insert(self, data: Any) -> None:
         new_node = Node(data)
+
         if self.is_empty():
-            self.head = new_node
-            self.tail = new_node
+            self.head = self.tail = new_node
             new_node.next = self.head
         else:
             self.tail.next = new_node
             self.tail = new_node
             self.tail.next = self.head
+
         self.size += 1
 
-    # Check if value exists
+    # -------------------------
+    # Search Operations
+    # -------------------------
+
+    # Check if a value exists in the list
     def contains(self, value: Any) -> bool:
         if not self.head:
             return False
 
         current = self.head
+
         for _ in range(self.size):
             if current.data == value:
                 return True
             current = current.next
+
         return False
 
-    # Get element at index
+    # Get element at a specific index
     def getAt(self, index: int) -> Any:
         if index < 0 or index >= self.size:
             raise IndexError("Index out of range")
 
         current = self.head
+
         for _ in range(index):
             current = current.next
+
         return current.data
 
-    # Delete element by value
+    # -------------------------
+    # Deletion
+    # -------------------------
+
+    # Delete first occurrence of a value
     def delete(self, value: Any) -> bool:
         if not self.head:
             return False
@@ -64,14 +87,16 @@ class CircularLinkedList:
 
         for _ in range(self.size):
             if current.data == value:
-                # only one node
+
+                # Only one node case
                 if self.size == 1:
-                    self.head = None
-                    self.tail = None
+                    self.head = self.tail = None
                 else:
                     prev.next = current.next
+
                     if current == self.head:
                         self.head = current.next
+
                     if current == self.tail:
                         self.tail = prev
 
@@ -83,7 +108,11 @@ class CircularLinkedList:
 
         return False
 
-    # Print list safely
+    # -------------------------
+    # Display
+    # -------------------------
+
+    # Print the circular linked list safely
     def print_list(self) -> None:
         if not self.head:
             print("List is empty")
@@ -91,18 +120,23 @@ class CircularLinkedList:
 
         current = self.head
         elements = []
+
         for _ in range(self.size):
             elements.append(str(current.data))
             current = current.next
+
         print(" -> ".join(elements) + " -> (Back to Head)")
 
+    # -------------------------
+    # Advanced Operations
+    # -------------------------
 
-
+    # Rotate the circular linked list by k positions
     def rotate(self, k: int):
         if not self.head or k == 0:
             return
 
-        # Step 1: Calculate the length of the circular linked list
+        # Calculate list length
         length = 1
         current = self.head
 
@@ -110,27 +144,25 @@ class CircularLinkedList:
             current = current.next
             length += 1
 
-        # Step 2: Reduce k to avoid unnecessary full rotations
+        # Normalize k
         k = k % length
         if k == 0:
             return
 
-        # Step 3: Move to the node just before the new head
+        # Move to new tail position
         current = self.head
+
         for _ in range(k - 1):
             current = current.next
 
-        # Step 4: Define new head and new tail
         new_head = current.next
         new_tail = current
 
-        # Step 5: Maintain circular structure
+        # Re-link circular structure
         new_tail.next = new_head
-
-        # Step 6: Update head pointer
         self.head = new_head
 
-
+    # Flatten nested circular linked lists
     def flatten(self):
         if not self.head:
             return
@@ -142,40 +174,40 @@ class CircularLinkedList:
             if isinstance(current.data, CircularLinkedList):
                 sublist = current.data
 
-                # find sublist head & tail
+                # Find sublist head and tail
                 sub_head = sublist.head
                 sub_tail = sublist.head
 
                 while sub_tail.next != sublist.head:
                     sub_tail = sub_tail.next
 
-                # break circularity
+                # Break circular structure
                 sub_tail.next = None
 
-                # save next node in main list
                 next_node = current.next
 
-                # replace current node data with sublist head data
+                # Replace current node data with sublist head data
                 current.data = sub_head.data
 
-                # now link sublist nodes into main list
+                # Insert sublist nodes into main list
                 temp = sub_head.next
-
                 prev = current
+
                 while temp:
                     new_node = Node(temp.data)
                     prev.next = new_node
                     prev = new_node
                     temp = temp.next
 
-                # connect back to main list
+                # Connect back to main list
                 prev.next = next_node
 
             current = current.next
 
             if current == self.head:
                 break
-        
+
+    # Detect if list is circular using Floyd's Cycle Detection
     def is_circular(self) -> bool:
         if not self.head:
             return False
@@ -187,14 +219,12 @@ class CircularLinkedList:
             slow = slow.next
             fast = fast.next.next
 
-            # If they meet, there is a cycle
             if slow == fast:
                 return True
 
-        # If we reach None, it's not circular
         return False
-    
 
+    # Create a deep copy of the circular linked list
     def copy_circular(self):
         if not self.head:
             return None
