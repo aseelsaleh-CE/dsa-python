@@ -183,3 +183,18 @@ def test_map_function():
     assert new_dll.head.next.data == 4
     assert new_dll.head.next.next.data == 6
     assert new_dll.head.next.next.next is None
+
+
+def add(acc, x):
+    return acc + x
+
+
+def test_fold_sum():
+    dll = DoublyLinkedList()
+    dll.insert_at_tail(1)
+    dll.insert_at_tail(2)
+    dll.insert_at_tail(3)
+
+    result = dll.fold(add, 0)
+
+    assert result == 6
