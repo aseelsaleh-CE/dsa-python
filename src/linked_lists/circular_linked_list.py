@@ -175,3 +175,21 @@ class CircularLinkedList:
 
             if current == self.head:
                 break
+        
+    def is_circular(self) -> bool:
+        if not self.head:
+            return False
+
+        slow = self.head
+        fast = self.head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            # If they meet, there is a cycle
+            if slow == fast:
+                return True
+
+        # If we reach None, it's not circular
+        return False
