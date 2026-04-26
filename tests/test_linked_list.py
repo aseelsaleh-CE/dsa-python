@@ -187,3 +187,21 @@ def test_find_middle_odd():
 
     assert middle is not None
     assert middle.data == 3
+
+
+def test_insert_sorted():
+    lst = LinkedList()
+    lst.append(1)
+    lst.append(3)
+    lst.append(5)
+
+    lst.insert_sorted(4)
+
+    values = []
+    current = lst.head
+
+    while current:
+        values.append(current.data)
+        current = current.next
+
+    assert values == [1, 3, 4, 5]
