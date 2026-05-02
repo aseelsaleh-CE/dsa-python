@@ -105,6 +105,20 @@ class BinarySearchTree:
             return acc
         
         return traverse(self.root,initial)
+    
+    def filter(self, predicate_func) -> list:
+        result = []
+        self._filter_recursive(self.root, predicate_func, result)
+        return result
+    
+    def _filter_recursive(self, node, predicate_func, result):
+        if node is None:
+            return
+        if predicate_func(node.value):
+            result.append(node.value)  
+
+        self._filter_recursive(node.left, predicate_func, result)
+        self._filter_recursive(node.right, predicate_func, result)      
                     
                     
 
