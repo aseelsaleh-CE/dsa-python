@@ -132,7 +132,7 @@ class BinarySearchTree:
             self._inorder(node.right,traversal)
 
     #Root → Left → Right
-    def preorder(self):
+    def preorder(self) -> list[int]: 
         traversal = []
         self._preorder(self.root, traversal)
         return traversal
@@ -145,7 +145,7 @@ class BinarySearchTree:
         self._preorder(node.right, result)
 
     #post order => Left → Right → Root
-    def postorder(self):
+    def postorder(self) -> list[int]: 
         traversal =[]
         self._postorder(self.root, traversal)
         return traversal
@@ -158,7 +158,14 @@ class BinarySearchTree:
         self._postorder(node.right, traversal)
         traversal.append(node.value)
 
+    def get_height(self, node):
+        if node is None:
+            return -1 
         
+        left_hieght = self.get_height(node.left)
+        right_hieght = self.get_height(node.right)
+
+        return 1 + max(left_hieght,right_hieght)
 
 
         
