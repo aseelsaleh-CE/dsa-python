@@ -118,17 +118,30 @@ class BinarySearchTree:
             result.append(node.value)  
 
         self._filter_recursive(node.left, predicate_func, result)
-        self._filter_recursive(node.right, predicate_func, result)      
-                    
-                    
+        self._filter_recursive(node.right, predicate_func, result)   
 
-                
-                    
-                
-
-
-
-
-
-
+    #In-order Traversal (Left → Root → Right)
+    def inorder(self) -> list[int]:  
+        traversal =[]
+        self._inorder(self.root, traversal)
+        return traversal
+    def _inorder(self, node, traversal):
+        if node is not None:
+            self._inorder(node.left,traversal)
+            traversal.append(node.value)
+            self._inorder(node.right,traversal)
     
+
+                        
+                        
+
+                    
+                        
+                    
+
+
+
+
+
+
+        
