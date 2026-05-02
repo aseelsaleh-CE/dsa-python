@@ -214,3 +214,28 @@ def test_inorder_empty_tree():
     bst = BinarySearchTree()
 
     assert bst.inorder() == []
+
+def test_preorder():
+    bst = BinarySearchTree()
+    for v in [10, 5, 15, 3, 7]:
+        bst.insert(v)
+
+    assert bst.preorder() == [10, 5, 3, 7, 15]
+
+def test_postorder():
+    bst = BinarySearchTree()
+    for v in [10, 5, 15, 3, 7]:
+        bst.insert(v)
+
+    assert bst.postorder() == [3, 7, 5, 15, 10]
+
+def test_postorder_single():
+    bst = BinarySearchTree()
+    bst.insert(10)
+
+    assert bst.postorder() == [10]
+
+def test_postorder_empty():
+    bst = BinarySearchTree()
+
+    assert bst.postorder() == []
