@@ -77,7 +77,7 @@ class BinarySearchTree:
 
         return False
     
-    def map(self, transform_func):
+    def map(self, transform_func) ->BinarySearchTree:
         new_tree = BinarySearchTree()
         new_tree.root = self._map_recursive(self.root, transform_func)
         return new_tree
@@ -94,6 +94,17 @@ class BinarySearchTree:
 
         return new_node
 
+    def fold(self, combine_func, initial):
+        def traverse(node, acc):
+            if node is None:
+                return acc  
+            
+            acc = combine_func(acc, node.value)
+            acc = traverse(node.left, acc)
+            acc = traverse(node.right, acc)
+            return acc
+        
+        return traverse(self.root,initial)
                     
                     
 
