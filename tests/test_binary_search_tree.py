@@ -94,3 +94,14 @@ def test_search_after_multiple_inserts():
     assert bst.search(20) is True
     assert bst.search(80) is True
     assert bst.search(100) is False
+
+def test_map_bst():
+    bst = BinarySearchTree()
+    for v in [10, 5, 15]:
+        bst.insert(v)
+
+    new_tree = bst.map(lambda x: x * 2)
+
+    assert new_tree.root.value == 20
+    assert new_tree.root.left.value == 10
+    assert new_tree.root.right.value == 30
