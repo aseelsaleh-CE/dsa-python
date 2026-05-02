@@ -130,18 +130,36 @@ class BinarySearchTree:
             self._inorder(node.left,traversal)
             traversal.append(node.value)
             self._inorder(node.right,traversal)
+
+    #Root → Left → Right
+    def preorder(self):
+        traversal = []
+        self._preorder(self.root, traversal)
+        return traversal
     
+    def _preorder(self, node, result):
+        if node is None:
+            return
+        result.append(node.value)
+        self._preorder(node.left, result)
+        self._preorder(node.right, result)
 
-                        
-                        
+    #post order => Left → Right → Root
+    def postorder(self):
+        traversal =[]
+        self._postorder(self.root, traversal)
+        return traversal
+    
+    def _postorder(self, node , traversal):
+        if node is None:
+            return
+        
+        self._postorder(node.left, traversal)
+        self._postorder(node.right, traversal)
+        traversal.append(node.value)
 
-                    
-                        
-                    
-
-
-
-
+        
 
 
         
+
