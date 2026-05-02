@@ -95,12 +95,15 @@ def test_search_after_multiple_inserts():
     assert bst.search(80) is True
     assert bst.search(100) is False
 
+def double(x):
+    return x * 2
+
 def test_map_bst():
     bst = BinarySearchTree()
     for v in [10, 5, 15]:
         bst.insert(v)
 
-    new_tree = bst.map(lambda x: x * 2)
+    new_tree = bst.map(double)
 
     assert new_tree.root.value == 20
     assert new_tree.root.left.value == 10
@@ -114,28 +117,37 @@ def create_bst():
         tree.insert(v)
     return tree
 
+def add(acc, x):
+    return acc + x
 
 def test_fold_sum():
     bst = create_bst()
-    result = bst.fold(lambda acc, x: acc + x, 0)
+    result = bst.fold(add, 0)
     assert result == 40
 
 
+def max_func(acc, x):
+    return max(acc, x)
+
 def test_fold_max():
     bst = create_bst()
-    result = bst.fold(lambda acc, x: max(acc, x), float("-inf"))
+    result = bst.fold(max_func, float("-inf"))
     assert result == 15
 
+def count(acc, x):
+    return acc + 1
 
 def test_fold_count_nodes():
     bst = create_bst()
-    result = bst.fold(lambda acc, x: acc + 1, 0)
+    result = bst.fold(count, 0)
     assert result == 5
 
+def greater_than_10(x):
+    return x > 10
 
 def test_fold_empty_tree():
     tree = BinarySearchTree()
-    result = tree.fold(lambda acc, x: acc + x, 0)
+    result = tree.fold(add, 0)
     assert result == 0
 
 def create_binary_search_tree():
@@ -147,23 +159,58 @@ def create_binary_search_tree():
 
 def test_filter_greater_than_10():
     bst = create_binary_search_tree()
-    result = bst.filter(lambda x: x > 10)
+    result = bst.filter(greater_than_10)
     assert sorted(result) == [12, 15, 18]
 
 
+def less_than_5(x):
+    return x < 5
+
 def test_filter_less_than_5():
     bst = create_binary_search_tree()
-    result = bst.filter(lambda x: x < 5)
+    result = bst.filter(less_than_5)
     assert result == [3]
 
+def greater_than_100(x):
+    return x > 100
 
 def test_filter_no_match():
     bst = create_binary_search_tree()
-    result = bst.filter(lambda x: x > 100)
+    result = bst.filter(greater_than_100)
     assert result == []
 
+def greater_than_0(x):
+    return x > 0
 
 def test_filter_empty_tree():
     bst = BinarySearchTree()
-    result = bst.filter(lambda x: x > 0)
+    result = bst.filter(greater_than_0)
     assert result == []
+
+def test_inorder():
+    bst = BinarySearchTree()
+    for v in [10, 5, 15, 3, 7]:
+        bst.insert(v)
+
+    assert bst.inorder() == [3, 5, 7, 10, 15]
+
+def test_inorder_sorted():
+    bst = BinarySearchTree()
+    values = [10, 5, 15, 3, 7]
+    for v in values:
+        bst.insert(v)
+
+    result = bst.inorder()
+
+    assert result == [3, 5, 7, 10, 15]
+
+def test_inorder_single_node():
+    bst = BinarySearchTree()
+    bst.insert(10)
+
+    assert bst.inorder() == [10]
+
+def test_inorder_empty_tree():
+    bst = BinarySearchTree()
+
+    assert bst.inorder() == []
