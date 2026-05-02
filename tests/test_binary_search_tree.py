@@ -239,3 +239,10 @@ def test_postorder_empty():
     bst = BinarySearchTree()
 
     assert bst.postorder() == []
+
+def test_height():
+    bst = BinarySearchTree()
+    for v in [10, 5, 15, 3]:
+        bst.insert(v)
+
+    assert bst.get_height(bst.root) == 2
