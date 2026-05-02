@@ -68,3 +68,29 @@ def test_remove_root():
     bst.remove(10)
 
     assert bst.root.value != 10
+
+def test_search_non_existing_value():
+    bst = BinarySearchTree()
+    values = [10, 5, 15]
+
+    for v in values:
+        bst.insert(v)
+
+    assert bst.search(100) is False
+    assert bst.search(0) is False
+
+def test_search_empty_tree():
+    bst = BinarySearchTree()
+
+    assert bst.search(10) is False
+
+def test_search_after_multiple_inserts():
+    bst = BinarySearchTree()
+    values = [50, 30, 70, 20, 40, 60, 80]
+
+    for v in values:
+        bst.insert(v)
+
+    assert bst.search(20) is True
+    assert bst.search(80) is True
+    assert bst.search(100) is False
