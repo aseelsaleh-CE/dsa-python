@@ -137,3 +137,33 @@ def test_fold_empty_tree():
     tree = BinarySearchTree()
     result = tree.fold(lambda acc, x: acc + x, 0)
     assert result == 0
+
+def create_binary_search_tree():
+    tree = BinarySearchTree()
+    values = [10, 5, 15, 3, 7, 12, 18]
+    for v in values:
+        tree.insert(v)
+    return tree
+
+def test_filter_greater_than_10():
+    bst = create_binary_search_tree()
+    result = bst.filter(lambda x: x > 10)
+    assert sorted(result) == [12, 15, 18]
+
+
+def test_filter_less_than_5():
+    bst = create_binary_search_tree()
+    result = bst.filter(lambda x: x < 5)
+    assert result == [3]
+
+
+def test_filter_no_match():
+    bst = create_binary_search_tree()
+    result = bst.filter(lambda x: x > 100)
+    assert result == []
+
+
+def test_filter_empty_tree():
+    bst = BinarySearchTree()
+    result = bst.filter(lambda x: x > 0)
+    assert result == []
