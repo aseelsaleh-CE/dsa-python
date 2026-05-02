@@ -63,13 +63,26 @@ class BinarySearchTree:
         while current.left:
             current = current.left
         return current
+    
+    def search(self, data) -> bool:
+        current = self.root
+
+        while current:
+            if data == current.data:
+                return True
+            elif data < current.data:
+                current = current.left
+            else:
+                current = current.right
+
+        return False
+
+                    
+                    
 
                 
+                    
                 
-
-            
-                
-            
 
 
 
