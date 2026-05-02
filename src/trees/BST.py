@@ -64,18 +64,35 @@ class BinarySearchTree:
             current = current.left
         return current
     
-    def search(self, data) -> bool:
+    def search(self, data:int) -> bool:
         current = self.root
 
         while current:
-            if data == current.data:
+            if data == current.value:
                 return True
-            elif data < current.data:
+            elif data < current.value:
                 current = current.left
             else:
                 current = current.right
 
         return False
+    
+    def map(self, transform_func):
+        new_tree = BinarySearchTree()
+        new_tree.root = self._map_recursive(self.root, transform_func)
+        return new_tree
+    
+
+    def _map_recursive(self, node:Node, transform_func):
+        if node is None:
+            return None
+        
+        new_node = Node(transform_func(node.value))
+
+        new_node.left = self._map_recursive(node.left, transform_func)
+        new_node.right = self._map_recursive(node.right, transform_func)
+
+        return new_node
 
                     
                     
