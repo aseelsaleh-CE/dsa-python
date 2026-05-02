@@ -246,3 +246,17 @@ def test_height():
         bst.insert(v)
 
     assert bst.get_height(bst.root) == 2
+
+def test_is_balanced_true():
+    bst = BinarySearchTree()
+    for v in [10, 5, 15]:
+        bst.insert(v)
+
+    assert bst.is_balanced(bst.root) is True
+
+def test_is_unbalanced():
+    bst = BinarySearchTree()
+    for v in [10, 5, 3, 1]:
+        bst.insert(v)
+
+    assert bst.is_balanced(bst.root) is False
