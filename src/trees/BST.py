@@ -160,13 +160,24 @@ class BinarySearchTree:
 
     def get_height(self, node):
         if node is None:
-            return -1 
+            return -1
         
         left_hieght = self.get_height(node.left)
         right_hieght = self.get_height(node.right)
 
         return 1 + max(left_hieght,right_hieght)
 
+    def is_balanced(self, node) ->bool:
+        if node is None:
+            return True
+        
+        left_height = self.get_height(node.left)
+        right_height = self.get_height(node.right)
+
+        if abs(left_height - right_height) > 1:
+            return False
+        
+        return self.is_balanced(node.left) and self.is_balanced(node.right)
 
         
 
