@@ -3,7 +3,7 @@ class Node:
         self.value = value
         self.left = None
         self.right = None 
-        self.hight: int = 1
+        self.height: int = 1
 class AVLTree:
     def __init__(self) ->None:
         self.root = None
@@ -20,7 +20,7 @@ class AVLTree:
     def _balance_factor(self, node:Node) -> int:
         return self._height(node.left) - self._height(node.right)
     
-    def _reblance(self, node:Node) -> Node:
+    def _rebalance(self, node:Node) -> Node:
         balance = self._balance_factor(node)
 
         # LL
@@ -28,14 +28,14 @@ class AVLTree:
             return self._rotate_right(node)
         # LR
         if balance > 1 and self._balance_factor(node.left) < 0:
-            node.left = self._rotate_left(node)
+            node.left = self._rotate_left(node.left)
             return self._rotate_right(node)
         #RR
         if balance < -1 and self._balance_factor(node.right) <= 0:
             return self._rotate_left(node)
         # RL
         if balance < -1 and self._balance_factor(node.right) > 0:
-            node.right =self._rotate_right(node.right)
+            node.right = self._rotate_right(node.right)
             return self._rotate_left(node)
         
         return node
@@ -51,7 +51,21 @@ class AVLTree:
         
         return y
     
-   
+    def insert(self, value):
+        self.root = self._insert(self.root, value)
+
+    def _insert(self, node, value):
+            if node is None:
+                return Node(value)
+            
+            if value < node.value:
+                node.left = self._insert(node.left, value)
+            else:
+                node.right = self._insert(node.right, value)
+            
+            self._update_height(node)
+            return self._rebalance(node)   
         
 
         
+    
