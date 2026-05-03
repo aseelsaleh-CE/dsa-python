@@ -92,5 +92,31 @@ class AVLTree:
         
     def remove(self, value: int) ->None:
         self.root = self._remove(self.root ,value)
-    
+
+    def _remove(self, node, value: int) ->Node:
+        if node is None:
+            return None
+        
+        if value < node.value:
+            node.left = self._remove(node.left ,value)
+        elif value > node.value:
+            node.right = self._remove(node.right, value)
+        else:
+             # found node
+            if node.left is None:
+                return node.right
+            if node.right is None:
+                return node.left
+            
+             # two children → successor
+            successor = self._get_min (node.right)
+            node.value = successor.value
+            node.right = self._remove(node.right, successor.value)
+
+        self._update_height(node)
+        self._rebalance(node)
+
+
+
+
     
