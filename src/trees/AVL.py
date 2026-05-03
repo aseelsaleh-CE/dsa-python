@@ -19,3 +19,24 @@ class AVLTree:
 
     def _balance_factor(self, node:Node) -> int:
         return self._height(node.left) - self._height(node.right)
+    
+    def _reblance(self, node:Node) -> Node:
+        balance = self._balance_factor(node)
+
+        # LL
+        if balance > 1 and self._balance_factor(node.left) >= 0:
+            return self._rotate_right(node)
+        # LR
+        if balance > 1 and self._balance_factor(node.left) < 0:
+            node.left = self._rotate_left(node)
+            return self._rotate_right(node)
+        #RR
+        if balance < -1 and self._balance_factor(node.right) <= 0:
+            return self._rotate_left(node)
+        # RL
+        if balance < -1 and self._balance_factor(node.right) > 0:
+            node.right =self._rotate_right(node.right)
+            return self._rotate_left(node)
+        
+        return node
+        
