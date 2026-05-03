@@ -40,16 +40,31 @@ class AVLTree:
         
         return node
     
+    # Rotations
     def _rotate_left(self,z: Node) ->Node:
         y = z.right
         T2 = y.left
 
         y.left = z
         z.right = T2
+
         self._update_height(z)
         self._update_height(y)
         
         return y
+    
+    def _rotate_right(self, z: Node) -> Node:
+        y = z.left
+        T3 = y.right 
+
+        y.right = z
+        z.left = T3
+
+        self._update_height(z)
+        self._update_height(y)
+
+        return y 
+
     
     def insert(self, value):
         self.root = self._insert(self.root, value)
