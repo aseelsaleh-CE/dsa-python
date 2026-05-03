@@ -14,3 +14,8 @@ class AVLTree:
         else:
             return node.height
         
+    def _update_height(self, node) ->None:
+        node.height = 1 + max(self._height(node.left), self._height(node.right))
+
+    def _balance_factor(self, node:Node) -> int:
+        return self._height(node.left) - self._height(node.right)
