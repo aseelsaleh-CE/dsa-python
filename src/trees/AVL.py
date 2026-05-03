@@ -51,17 +51,7 @@ class AVLTree:
         
         return y
     
-    def _rotate_right(self, z:Node) ->Node:
-        y = z.left
-        T3 = y.right
-
-        y.right = z
-        z.left = T3
-
-        self._update_height(z)
-        self._update_height(y)
-
-        return y 
+   
         
 
         
