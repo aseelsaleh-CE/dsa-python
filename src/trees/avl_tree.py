@@ -70,17 +70,27 @@ class AVLTree:
         self.root = self._insert(self.root, value)
 
     def _insert(self, node, value):
-            if node is None:
-                return Node(value)
-            
-            if value < node.value:
-                node.left = self._insert(node.left, value)
-            else:
-                node.right = self._insert(node.right, value)
-            
-            self._update_height(node)
-            return self._rebalance(node)   
+        if node is None:
+            return Node(value)
         
+        if value < node.value:
+            node.left = self._insert(node.left, value)
+        elif value > node.value:
+            node.right = self._insert(node.right, value)
+        else:   
+            return node #ignore duplicates 
+         
+        self._update_height(node)
+        return self._rebalance(node)   
+    
+      #successor helper min value 
+    def _get_min(self,node: Node) -> Node:
+        while node.left:
+            node = node.left
+        return node
 
         
+    def remove(self, value: int) ->None:
+        self.root = self._remove(self.root ,value)
+    
     
