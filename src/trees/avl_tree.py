@@ -227,7 +227,15 @@ class AVLTree:
         self._pre_order(node.left, result)
         self._pre_order(node.right, result)
         return result
-
+    
+    def get_height(self, node):
+        if node is None:
+            return -1  
+        
+        left_h = self.get_height(node.left)
+        right_h = self.get_height(node.right)
+        
+        return 1 + max(left_h, right_h)
     
 
     
