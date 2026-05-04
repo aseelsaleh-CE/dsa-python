@@ -192,3 +192,13 @@ def test_postorder_simple():
     result = avl.post_order()
 
     assert result == [5, 15, 10]
+
+def test_preorder_simple():
+    avl = AVLTree()
+
+    for v in [10, 5, 15]:
+        avl.insert(v)
+
+    result = avl.pre_order()
+
+    assert result == [10, 5, 15]
