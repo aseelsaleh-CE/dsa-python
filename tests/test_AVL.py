@@ -79,3 +79,20 @@ def test_search_not_found():
 def test_search_empty_tree():
     avl = AVLTree()
     assert avl.search(10) is False
+
+def multiply_by_two(x: int) -> int:
+    return x * 2
+
+
+def add_one(x: int) -> int:
+    return x + 1
+
+def test_map_values():
+    avl = AVLTree()
+
+    for v in [10, 5, 15]:
+        avl.insert(v)
+
+    new_avl = avl.map(add_one)
+
+
