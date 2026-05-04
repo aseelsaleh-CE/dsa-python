@@ -1,4 +1,4 @@
-from src.trees.avl_tree import AVLTree
+from src.trees.avl_tree import AVLTree, Node
 
 def test_avl_insert_balanced():
     avl = AVLTree()
@@ -202,3 +202,22 @@ def test_preorder_simple():
     result = avl.pre_order()
 
     assert result == [10, 5, 15]
+
+def test_is_balanced():
+    tree = AVLTree()
+
+    tree.root = Node(10)
+    tree.root.left = Node(5)
+    tree.root.right = Node(15)
+
+    assert tree.is_balanced(tree.root) == True
+
+
+def test_is_not_balanced():
+    tree = AVLTree()
+
+    tree.root = Node(10)
+    tree.root.left = Node(5)
+    tree.root.left.left = Node(2)
+
+    assert tree.is_balanced(tree.root) == False
