@@ -96,3 +96,29 @@ def test_map_values():
     new_avl = avl.map(add_one)
 
 
+def multiply(a: int, b: int) -> int:
+    return a * b
+
+
+def max_func(a: int, b: int) -> int:
+    return max(a, b)
+
+def test_fold_max():
+    avl = AVLTree()
+
+    for v in [10, 50, 20]:
+        avl.insert(v)
+
+    result = avl.fold(max_func, float("-inf"))
+
+    assert result == 50
+    
+def test_fold_max():
+    avl = AVLTree()
+
+    for v in [10, 50, 20]:
+        avl.insert(v)
+
+    result = avl.fold(max_func, float("-inf"))
+
+    assert result == 50
