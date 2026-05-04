@@ -158,6 +158,23 @@ class AVLTree:
 
         self._map_insert(node.left, new_tree, transform_func)
         self._map_insert(node.right, new_tree, transform_func)
+    
+    
+    def fold (self, combine_func, initial):
+        return self._fold(self.root, combine_func, initial)
+    
+    def _fold(self, node, combine_func, acc):
+        if node is None:
+            return acc
+        
+        acc = combine_func(acc, node.value)
+        acc = self._fold(node.left, combine_func, acc)
+        acc = self._fold(node.right, combine_func, acc)
+
+        return acc
+
+        
+
 
     
 
