@@ -159,7 +159,7 @@ class AVLTree:
         self._map_insert(node.left, new_tree, transform_func)
         self._map_insert(node.right, new_tree, transform_func)
     
-    
+
     def fold (self, combine_func, initial):
         return self._fold(self.root, combine_func, initial)
     
@@ -172,6 +172,21 @@ class AVLTree:
         acc = self._fold(node.right, combine_func, acc)
 
         return acc
+    
+    def filter(self, predicate_func) -> list:
+        result = []
+        self._filter_recursive(self.root, predicate_func, result)
+        return result
+    
+    def _filter_recursive(self, node, predicate_func, result):
+        if node is None:
+            return
+        if predicate_func(node.value):
+            result.append(node.value)  
+
+        self._filter_recursive(node.left, predicate_func, result)
+        self._filter_recursive(node.right, predicate_func, result)   
+
 
         
 
