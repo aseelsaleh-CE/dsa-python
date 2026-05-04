@@ -112,7 +112,7 @@ def test_fold_max():
     result = avl.fold(max_func, float("-inf"))
 
     assert result == 50
-    
+
 def test_fold_max():
     avl = AVLTree()
 
@@ -122,3 +122,51 @@ def test_fold_max():
     result = avl.fold(max_func, float("-inf"))
 
     assert result == 50
+
+def is_greater_than_7(x: int) -> bool:
+    return x > 7
+
+
+def is_even(x: int) -> bool:
+    return x % 2 == 0
+
+
+def is_less_than_10(x: int) -> bool:
+    return x < 10
+
+def test_filter_greater_than_7():
+    avl = AVLTree()
+
+    for v in [10, 5, 15, 2, 7]:
+        avl.insert(v)
+
+    result = avl.filter(is_greater_than_7)
+
+    assert sorted(result) == [10, 15]
+
+def test_filter_even():
+    avl = AVLTree()
+
+    for v in [10, 5, 15, 2, 7, 8]:
+        avl.insert(v)
+
+    result = avl.filter(is_even)
+
+    assert sorted(result) == [2, 8, 10]
+
+def test_filter_less_than_10():
+    avl = AVLTree()
+
+    for v in [10, 5, 15, 2, 7]:
+        avl.insert(v)
+
+    result = avl.filter(is_less_than_10)
+
+    assert sorted(result) == [2, 5, 7]    
+
+def test_filter_empty_tree():
+    avl = AVLTree()
+
+    result = avl.filter(is_even)
+
+    assert result == []
