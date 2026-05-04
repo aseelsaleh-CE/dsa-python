@@ -142,6 +142,24 @@ class AVLTree:
                 current = current.right
 
         return False
+    
+    def map (self, transfom_func):
+        new_tree = AVLTree()
+        self._map_insert(self.root, new_tree, transfom_func)
+        return new_tree
+    
+    def _map_insert(self, node, new_tree, transform_func):
+        if node is None:
+            return 
+        
+        new_value = transform_func(node.value)
+
+        new_tree.insert(new_value)
+
+        self._map_insert(node.left, new_tree, transform_func)
+        self._map_insert(node.right, new_tree, transform_func)
+
+    
 
 
 
