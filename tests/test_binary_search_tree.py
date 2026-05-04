@@ -1,5 +1,4 @@
-from src.trees.BST import BinarySearchTree
-
+from src.trees.binary_search_tree import BinarySearchTree
 
 def test_insert_root():
     bst = BinarySearchTree()
