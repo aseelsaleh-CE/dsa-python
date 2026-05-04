@@ -187,6 +187,24 @@ class AVLTree:
         self._filter_recursive(node.left, predicate_func, result)
         self._filter_recursive(node.right, predicate_func, result)   
 
+    def in_order(self):
+        result = []
+        self._inorder(self.root, result)
+        return result
+    
+    def _inorder(self, node, result):
+        if node is None:
+            return
+        
+        self._inorder(node.left, result)
+        result.append(node.value)
+        self._inorder(node.right, result)
+    
+    
+
+    
+
+
 
         
 
