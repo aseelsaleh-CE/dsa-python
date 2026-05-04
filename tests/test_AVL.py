@@ -182,3 +182,13 @@ def test_inorder_sorted():
     result = avl.in_order()
 
     assert result == [2, 5, 7, 10, 15]
+
+def test_postorder_simple():
+    avl = AVLTree()
+
+    for v in [10, 5, 15]:
+        avl.insert(v)
+
+    result = avl.post_order()
+
+    assert result == [5, 15, 10]
