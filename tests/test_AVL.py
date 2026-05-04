@@ -170,3 +170,15 @@ def test_filter_empty_tree():
     result = avl.filter(is_even)
 
     assert result == []
+
+def test_inorder_sorted():
+    avl = AVLTree()
+
+    values = [10, 5, 15, 2, 7]
+
+    for v in values:
+        avl.insert(v)
+
+    result = avl.in_order()
+
+    assert result == [2, 5, 7, 10, 15]
