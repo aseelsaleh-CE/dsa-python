@@ -230,14 +230,26 @@ class AVLTree:
     
     def get_height(self, node):
         if node is None:
-            return -1  
-        
-        left_h = self.get_height(node.left)
-        right_h = self.get_height(node.right)
-        
-        return 1 + max(left_h, right_h)
+            return -1
+        return 1 + max(self.get_height(node.left),
+                    self.get_height(node.right))
     
 
+    def is_balanced(self, node):
+        if node is None:
+            return True
+
+        left_height = self.get_height(node.left)
+        right_height = self.get_height(node.right)
+
+        if abs(left_height - right_height) > 1:
+            return False
+
+        if self.is_balanced(node.left) and \
+        self.is_balanced(node.right):
+            return True
+
+        return False
     
 
     
