@@ -200,6 +200,22 @@ class AVLTree:
         result.append(node.value)
         self._inorder(node.right, result)
     
+    def post_order(self):
+        result = []
+        self._post_order (self.root, result)
+        return result
+    
+    def _post_order(self, node, result):
+        if node is None:
+            return
+        
+        self._post_order(node.left, result)
+        self._post_order(node.right, result)
+        result.append(node.value)
+        return result
+
+    def pre_order 
+
     
 
     
