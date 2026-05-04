@@ -202,7 +202,7 @@ class AVLTree:
     
     def post_order(self):
         result = []
-        self._post_order (self.root, result)
+        self._post_order(self.root, result)
         return result
     
     def _post_order(self, node, result):
@@ -213,8 +213,22 @@ class AVLTree:
         self._post_order(node.right, result)
         result.append(node.value)
         return result
+    
+    def pre_order(self):
+        result = []
+        self._pre_order(self.root, result)
+        return result
+    
+    def _pre_order(self, node, result):
+        if node is None:
+            return 
+        
+        result.append(node.value)
+        self._pre_order(node.left, result)
+        self._pre_order(node.right, result)
+        return result
 
-    def pre_order 
+    
 
     
 
