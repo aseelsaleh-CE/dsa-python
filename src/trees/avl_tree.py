@@ -116,6 +116,36 @@ class AVLTree:
         self._update_height(node)
         self._rebalance(node)
 
+    # def search (self, value: int) ->bool:
+    #     return self._search(self.root, value)
+    
+    # def _search(self, node, value:int) ->bool:
+    #     if node is None:
+    #         return False
+        
+    #     if value == node.value:
+    #         return True
+    #     elif value < node.value:
+    #         return self._search(node.left, value)
+    #     else:
+    #         return self._search(node.right, value)
+
+    def search(self, value: int) ->bool:
+        current = self.root 
+
+        while current is not None:
+            if value == current.value:
+                return True
+            elif value < current.value:
+                current = current.left
+            else:
+                current = current.right
+
+        return False
+
+
+
+        
  
 
 
