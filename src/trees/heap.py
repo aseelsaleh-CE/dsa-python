@@ -38,6 +38,29 @@ class Node:
                 None
                 
 
+        def insert(self, value):
+            new_node = Node(value)
+            self.size +=1
+            
+            if self.root is None:
+                self.root = new_node
+                return
+            
+            parent = self._get_parent(self.size)
+            
+            if parent.left is None:
+                parent.left = new_node
+            else:
+                parent.right = new_node
+            
+            new_node.parent = parent
+            self._heapify_up(new_node)
+        
+        def _heapify_up(self, node):
+            while node.parent and node.value < node.parent.value:
+                node.value,node.parent.value = node.parent.value,node.value
+                node = node.parent
+            
         
         
         
