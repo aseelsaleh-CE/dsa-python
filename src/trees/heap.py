@@ -23,14 +23,30 @@ class Node:
             
             current = self.root
             
-            for bit in bin[:-1]:
+            for bit in path[:-1]:
                 if bit == "0":
                     current = current.left
                 else:
                     current = current.right
             
             return current
+        
+        def get_min(self):
+            if self.root:
+                return self.root.value 
+            else:
+                None
+                
+
+        
+        
+        
+        
+        
             
+                
+            
+        
    
    
             
