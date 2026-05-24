@@ -117,7 +117,7 @@ class MinHeap:
         
         #bubble down 
         self.bubble_down(self.root)
-             
+
         return min_value    
     
     def search(self, node, value:int) -> bool:
@@ -129,9 +129,24 @@ class MinHeap:
             return True
         
         return self.search(node.left, value) or self.search(node.right, value)  
+    
+    def find_node(self, node: Node | None, value: int) -> Node | None:
+       
+        if node is None:
+            return None
+        
+        if node.value == value:
+            return node
+        
+        left_result = self.find_node(node.left,value)
+        if left_result:
+            return left_result
+        
+        return self.find_node(node.right,value)
+        
   
 
-        
+    
    
          
         
