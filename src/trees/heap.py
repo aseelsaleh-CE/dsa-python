@@ -45,7 +45,8 @@ class MinHeap:
                 node = node.parent
                  
     # This function finds the parent node using the index path   
-    def _get_parent(self, index)->Node:
+    def _get_parent(self, index) -> Node:
+        
             path = bin(index)[3:]
             
             current = self.root
@@ -130,6 +131,7 @@ class MinHeap:
         
         return self.search(node.left, value) or self.search(node.right, value)  
     
+    #this function 
     def find_node(self, node: Node | None, value: int) -> Node | None:
        
         if node is None:
@@ -137,12 +139,51 @@ class MinHeap:
         
         if node.value == value:
             return node
+         
+        return (self.find_node(node.left,value) 
+                or self.find_node(node.right,value) )
+    
+    def delete_value(self, value: int) -> bool:
+       
+        if self.root is None:
+            return False 
+        # find target node
+        target = self.find_node(self.root, value)
         
-        left_result = self.find_node(node.left,value)
-        if left_result:
-            return left_result
+        if target is None:
+            return False
         
-        return self.find_node(node.right,value)
+        #find last node  
+        path = bin(self.size)[3:]
+        current = self.root
+        
+        for bit in path:
+            if bit =="0":
+                current = current.left
+            else:
+                current =current.right
+        
+        last_node = current
+        
+        #replace values
+        target.value = last_node.value
+        
+        if last_node.parent.left == last_node:
+            last_node.parent.left = None
+        else:
+            last_node.parent.right = None
+        
+        self.size -=1
+        
+        self.bubble_down(target)
+        
+        if target.parent and target.value < target.parent.value:
+            self.bubble_up(target)
+        
+        return True    
+       
+        
+        
         
   
 
