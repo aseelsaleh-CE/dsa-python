@@ -199,3 +199,27 @@ class MinHeap:
             self.bubble_up(target)
 
         return True
+    
+    # -------------------------
+    # update_value
+    # -------------------------
+   
+    def update_value(self, old_value: int, new_value: int) -> bool:
+
+        target = self.find_node(self.root, old_value)
+
+        if target is None:
+            return False
+
+        old = target.value
+        target.value = new_value
+
+        # if value became smaller
+        if new_value < old:
+            self.bubble_up(target)
+
+        # if value became larger
+        elif new_value > old:
+            self.bubble_down(target)
+
+        return True
