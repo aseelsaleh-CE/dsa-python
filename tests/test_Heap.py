@@ -44,3 +44,14 @@ def test_find_node():
 
     assert node is not None
     assert node.value == 5
+
+def test_delete_value():
+    heap = MinHeap()
+
+    values = [10, 5, 8, 2, 7]
+
+    for v in values:
+        heap.insert(v)
+
+    assert heap.delete_value(8) is True
+    assert heap.search(heap.root, 8) is False
