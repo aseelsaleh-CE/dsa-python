@@ -33,3 +33,14 @@ def test_search():
 
     assert heap.search(heap.root, 5) is True
     assert heap.search(heap.root, 100) is False
+
+def test_find_node():
+    heap = MinHeap()
+
+    heap.insert(10)
+    heap.insert(5)
+
+    node = heap.find_node(heap.root, 5)
+
+    assert node is not None
+    assert node.value == 5
