@@ -24,3 +24,12 @@ def test_delete_until_empty():
     assert heap.delete_min() == 3
     assert heap.delete_min() is None
     
+def test_search():
+    heap = MinHeap()
+
+    heap.insert(10)
+    heap.insert(5)
+    heap.insert(8)
+
+    assert heap.search(heap.root, 5) is True
+    assert heap.search(heap.root, 100) is False
