@@ -13,4 +13,14 @@ def test_multiple_inserts():
         heap.insert(v)
     assert heap.get_min() == 2
     
+def test_delete_until_empty():
+    heap = MinHeap()
+    heap.insert(3)
+    heap.insert(1)
+    heap.insert(2)
+    
+    assert heap.delete_min() == 1
+    assert heap.delete_min() == 2
+    assert heap.delete_min() == 3
+    assert heap.delete_min() is None
     
