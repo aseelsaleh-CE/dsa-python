@@ -128,7 +128,8 @@ class MinHeap:
         if node.value == value:
             return True
         
-        return self.search(node.left, value) or self.search(node.right, value)
+        return self.search(node.left, value) or self.search(node.right, value)  
+  
 
         
    
