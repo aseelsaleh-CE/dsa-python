@@ -55,3 +55,14 @@ def test_delete_value():
 
     assert heap.delete_value(8) is True
     assert heap.search(heap.root, 8) is False
+
+def test_update_value():
+    heap = MinHeap()
+
+    heap.insert(10)
+    heap.insert(5)
+    heap.insert(8)
+
+    heap.update_value(10, 1)
+
+    assert heap.get_min() == 1
