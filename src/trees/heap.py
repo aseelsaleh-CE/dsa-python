@@ -1,6 +1,6 @@
 class Node:
-    def __init__(self,value):
-        self.value = value
+    def __init__(self,value: int):
+        self.value: int = value
         self.left = None
         self.right = None
         self.parent = None
@@ -10,8 +10,8 @@ class MinHeap:
             self.root = None
             self.size = 0
             
-            
-    def insert(self, value):
+    # This function inserts a new value into the heap        
+    def insert(self, value: int) -> None:
             new_node = Node(value)
             self.size +=1
             
@@ -27,23 +27,24 @@ class MinHeap:
                 parent.right = new_node
             
             new_node.parent = parent
-            self._heapify_up(new_node)
+            self.bubble_up(new_node)
            
-           
-    def get_min(self):
+    # This function returns the minimum value in the heap       
+    def get_min(self)-> int | None:
             if self.root:
                 return self.root.value 
             else:
                 return None     
         
-        
-    def _heapify_up(self, node):
+    # This function compares the node with its parent and moves it up if needed
+    def bubble_up(self, node) -> None:
             while node.parent and node.value < node.parent.value:
-                node.value,node.parent.value = node.parent.value,node.value
+                node.value = node.parent.value
+                node.parent.value = node.value
                 node = node.parent
                  
-        
-    def _get_parent(self, index):
+    # This function finds the parent node using the index path   
+    def _get_parent(self, index)->Node:
             path = bin(index)[3:]
             
             current = self.root
