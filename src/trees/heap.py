@@ -58,6 +58,26 @@ class MinHeap:
             
             return current    
     
+
+    def bubble_down(self, node: Node) ->None:
+        
+        while node :
+           
+            smallest = node 
+            
+            if node.left and node.left.value < smallest.value:
+                smallest = node.left
+            
+            if node.right and node.right.value < smallest.value:
+                smallest = node.right
+            
+            if smallest == node:
+                break 
+            
+            node.value, smallest.value = (smallest.value,node.value)
+           
+            node = smallest
+        
     #this function removes the minumime value from heap
     def delete_min(self) -> int | None:
         
@@ -98,31 +118,20 @@ class MinHeap:
         #bubble down 
         self.bubble_down(self.root)
              
-        return min_value
+        return min_value    
     
-    
-    def bubble_down(self, node: Node) ->None:
-        while node :
-            smallest = node 
-            
-            if node.left and node.left.value < smallest.value:
-                smallest = node.left
-            
-            if node.right and node.right.value < smallest.value:
-                smallest = node.right
-            
-            if smallest == node:
-                break 
-            
-            node.value, smallest.value = (smallest.value,node.value)
+    def search(self, node, value:int) -> bool:
         
+        if node is None:
+            return False
         
+        if node.value == value:
+            return True
         
+        return self.search(node.left, value) or self.search(node.right, value)
+
         
-        
-    
-        
-       
+   
          
         
        
