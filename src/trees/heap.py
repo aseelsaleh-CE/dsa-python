@@ -15,10 +15,12 @@ class MinHeap:
             new_node = Node(value)
             self.size +=1
             
+            # if heap is empty
             if self.root is None:
                 self.root = new_node
                 return
             
+            # find parent
             parent = self._get_parent(self.size)
             
             if parent.left is None:
@@ -39,8 +41,7 @@ class MinHeap:
     # This function compares the node with its parent and moves it up if needed
     def bubble_up(self, node) -> None:
             while node.parent and node.value < node.parent.value:
-                node.value = node.parent.value
-                node.parent.value = node.value
+                node.value, node.parent.value = (node.parent.value,node.value)
                 node = node.parent
                  
     # This function finds the parent node using the index path   
@@ -56,6 +57,70 @@ class MinHeap:
                     current = current.right
             
             return current    
+    
+    #this function removes the minumime value from heap
+    def delete_min(self) -> int | None:
+        
+        if self.root is None:
+            return None
+        
+        min_value = self.root.value
+        
+        #only one node in heap
+        if self.size == 1:
+            self.root = None
+            self.size = 0
+            return min_value
+        
+        # find last node
+        path = bin(self.size)[3:]
+        current = self.root
+        
+        for bit in path:
+            if bit == "0":
+                current = current.left
+            else:
+                current = current.right
+            
+        last_node = current
+            
+        #move last node value to root 
+        self.root.value = last_node.value
+        
+        #remove last node
+        if last_node.parent.left == last_node:
+            last_node.parent.left = None
+        else:
+            last_node.parent.right = None
+        
+        self.size -= 1
+        
+        #bubble down 
+        self.bubble_down(self.root)
+             
+        return min_value
+    
+    
+    def bubble_down(self, node: Node) ->None:
+        while node :
+            smallest = node 
+            
+            if node.left and node.left.value < smallest.value:
+                smallest = node.left
+            
+            if node.right and node.right.value < smallest.value:
+                smallest = node.right
+            
+            if smallest == node:
+                break 
+            
+            node.value, smallest.value = (smallest.value,node.value)
+        
+        
+        
+        
+        
+    
         
        
          
