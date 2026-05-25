@@ -31,3 +31,13 @@ def test_delete_non_existing_key():
 
     assert result is False
     assert len(ht) == 1
+
+def test_update_method():
+    ht = HashTable()
+
+    ht.insert("name", "Ali")
+
+    result = ht.update("name", "Mohammed")
+
+    assert result is True
+    assert ht.search("name") == "Mohammed"
