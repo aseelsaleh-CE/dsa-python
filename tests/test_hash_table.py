@@ -46,3 +46,16 @@ def test_search_missing_key():
     ht = HashTable()
 
     assert ht.search("unknown") is None
+
+def test_resize():
+    ht = HashTable(capacity=2)
+
+    ht.insert("a", 1)
+    ht.insert("b", 2)
+    ht.insert("c", 3)  # triggers resize
+
+    assert len(ht) == 3
+    assert ht.search("a") == 1
+    assert ht.search("b") == 2
+    assert ht.search("c") == 3
+    assert ht.capacity >= 4
