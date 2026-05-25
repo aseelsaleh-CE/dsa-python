@@ -12,3 +12,12 @@ def test_insert():
     assert node is not None
     assert node.key == "name"
     assert node.value == "Aseel"
+
+
+def test_insert_and_search():
+    ht = HashTable()
+
+    ht.insert("name", "Ali")
+
+    assert ht.search("name") == "Ali"
+    assert len(ht) == 1
