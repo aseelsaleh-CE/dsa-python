@@ -15,12 +15,7 @@ class HashTable:
     # Converts key into a valid index within the hash table range
     def _hash(self,key):
         return hash(key) % self.capacity
-        # total = 0
-        # for char in key:
-        #     total+= ord(char) #Ascii code
-        # return total % self.capacity
-        # return hash(key) & (self.capacity -1) => if capacity 2^power
-    
+       
     def _resize(self):
         # Save the old buckets before resizing
         old_bukets = self.buckets   
@@ -62,6 +57,30 @@ class HashTable:
         
         if self.size / self.capacity > self.load_factory_threshod:
             self._resize()
+    
+    def delete(self, key):
+        index = self._hash(key)
+        curruent = self.buckets[index]
+        previous = None
         
+        while curruent:
+            if curruent.key == key:
+                # If node is first node in bucket
+                if previous is None:
+                    self.buckets[index] = curruent.next
+                # If node is in middle/end
+                else:
+                     previous.next = curruent.next
+                     
+                self.size -=1
+                
+                return True
+            previous = curruent
+            curruent = curruent.next
+            
+        return False
+    
+                    
+            
             
     
