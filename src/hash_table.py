@@ -1,3 +1,4 @@
+from typing import Optional, Any
 class Node:
     def __init__(self, key, value):
         self.key = key
@@ -5,20 +6,24 @@ class Node:
         self.next = None
 
 class HashTable:
-    def __init__(self, capacity=8):
-        self.capacity = capacity  # index = hash(key) & (capacity - 1)
-        self.size = 0
+    def __init__(self, capacity: int =8 ) ->None:
+        self.capacity: int = capacity  # index = hash(key) & (capacity - 1)
+        self.size:int  = 0
         self.buckets = [None] * self.capacity # [None, None, None, None, None, None, None, None]
-        self.load_factory_threshod = 0.75  # load factor = size / capacity
+        self.load_factory_threshold:float = 0.75  # load factor = size / capacity
     
    
     # Converts key into a valid index within the hash table range
-    def _hash(self,key):
+    def _hash(self,key ) ->int:
         return hash(key) % self.capacity
+    
+    def __len__(self) -> int:
+        return self.size
+        
        
-    def _resize(self):
+    def _resize(self) ->None:
         # Save the old buckets before resizing
-        old_bukets = self.buckets   
+        old_buckets = self.buckets   
         # Double the capacity to reduce collisions
         self.capacity *=2
         self.buckets = [None] * self.capacity
@@ -26,14 +31,14 @@ class HashTable:
         self.size = 0 
         
         # Reinsert all elements into the new buckets (rehashing)
-        for bucket in old_bukets:
+        for bucket in old_buckets:
             current = bucket
           # Traverse linked list in each bucket (handling collisions)
             while current:
                 self.insert(current.key,current.value)
                 current = current.next
     
-    def insert(self, key, value):
+    def insert(self, key, value) -> None:
         # Get bucket index using hash function
         index = self._hash(key)
         # Start from first node in the bucket
@@ -55,32 +60,32 @@ class HashTable:
         #increase number of stored elements
         self.size += 1
         
-        if self.size / self.capacity > self.load_factory_threshod:
+        if self.size / self.capacity > self.load_factory_threshold:
             self._resize()
     
-    def delete(self, key):
+    def delete(self, key) -> bool:
         index = self._hash(key)
-        curruent = self.buckets[index]
+        current = self.buckets[index]
         previous = None
         
-        while curruent:
-            if curruent.key == key:
+        while current:
+            if current.key == key:
                 # If node is first node in bucket
                 if previous is None:
-                    self.buckets[index] = curruent.next
+                    self.buckets[index] = current.next
                 # If node is in middle/end
                 else:
-                     previous.next = curruent.next
+                     previous.next = current.next
                      
                 self.size -=1
                 
                 return True
-            previous = curruent
-            curruent = curruent.next
+            previous = current
+            current = current.next
             
         return False
     
-    def update(self, key, new_value):
+    def update(self, key, new_value) -> bool:
         
         index = self._hash(key)
         
@@ -96,7 +101,7 @@ class HashTable:
         
         return False
     
-    def search(self, key):
+    def search(self, key) -> Optional[Any]:
         
         index = self._hash(key)
         current = self.buckets[index]
@@ -108,9 +113,9 @@ class HashTable:
             
             current = current.next 
             
-        return 
+        return None
     
-    def __repr__(self):
+    def __repr__(self) -> str:
         
         result = ""
 
