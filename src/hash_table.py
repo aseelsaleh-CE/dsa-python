@@ -6,7 +6,7 @@ class Node:
         self.next = None
 
 class HashTable:
-    def __init__(self, capacity: int =8 ) ->None:
+    def __init__(self, capacity: int = 8 ) -> None:
         self.capacity: int = capacity  # index = hash(key) & (capacity - 1)
         self.size:int  = 0
         self.buckets = [None] * self.capacity # [None, None, None, None, None, None, None, None]
@@ -14,18 +14,18 @@ class HashTable:
     
    
     # Converts key into a valid index within the hash table range
-    def _hash(self,key ) ->int:
+    def _hash(self, key ) -> int:
         return hash(key) % self.capacity
     
     def __len__(self) -> int:
         return self.size
         
        
-    def _resize(self) ->None:
+    def _resize(self) -> None:
         # Save the old buckets before resizing
         old_buckets = self.buckets   
         # Double the capacity to reduce collisions
-        self.capacity *=2
+        self.capacity *= 2
         self.buckets = [None] * self.capacity
          # Reset size because elements will be reinserted
         self.size = 0 
