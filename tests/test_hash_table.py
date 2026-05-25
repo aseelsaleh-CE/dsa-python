@@ -41,3 +41,8 @@ def test_update_method():
 
     assert result is True
     assert ht.search("name") == "Mohammed"
+
+def test_search_missing_key():
+    ht = HashTable()
+
+    assert ht.search("unknown") is None
