@@ -21,3 +21,13 @@ def test_insert_and_search():
 
     assert ht.search("name") == "Ali"
     assert len(ht) == 1
+
+def test_delete_non_existing_key():
+    ht = HashTable()
+
+    ht.insert("name", "Ali")
+
+    result = ht.delete("age")
+
+    assert result is False
+    assert len(ht) == 1
