@@ -95,6 +95,40 @@ class HashTable:
             current = current.next
         
         return False
+    
+    def search(self, key):
+        
+        index = self._hash(key)
+        current = self.buckets[index]
+        
+        while current:
+            
+            if current.key == key:
+                return current.value
+            
+            current = current.next 
+            
+        return 
+    
+    def __repr__(self):
+        
+        result = ""
+
+        for index, bucket in enumerate(self.buckets):
+
+            result += f"Bucket {index}: "
+
+            current = bucket
+
+            while current:
+                result += f"({current.key}: {current.value}) -> "
+                current = current.next
+
+            result += "None\n"
+
+        return result
+            
+        
 
     
     
