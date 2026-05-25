@@ -80,6 +80,27 @@ class HashTable:
             
         return False
     
+    def update(self, key, new_value):
+        
+        index = self._hash(key)
+        
+        current = self.buckets[index]
+        
+        while current:
+            
+            if current.key == key:
+                current.value = new_value
+                return True
+            
+            current = current.next
+        
+        return False
+    
+    
+    
+    
+    
+      
                     
             
             
